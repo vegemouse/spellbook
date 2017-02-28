@@ -7,6 +7,13 @@ import { connect } from 'react-redux';
 
 
 class NewDeck extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {inputtedCard: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   // Used for routing after submit
   static contextTypes = {
@@ -16,21 +23,41 @@ class NewDeck extends Component {
   renderCards() {
     return this.props.foundCards.map((card) => {
       return(
-        <li>
+        <li key={card.id}>
           {card.name}
         </li>
       );
     });
   }
 
+  handleChange(event) {
+    this.setState({inputtedCard: event.target.value});
+  }
+
+  handleSubmit(event) {
+    this.props.fetchCards(this.state.inputtedCard)
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
         <div>New Deck Component!</div>
-        <span onClick={this.props.fetchCards}>Get Nissas</span>
+
+        <form onSubmit={this.handleSubmit}>
+
+          <label>Card name</label>
+
+          <input type="text" value={this.state.inputtedCard} onChange={this.handleChange} />
+
+          <button type="submit">Get Cards</button>
+
+        </form>
+
         <ul>
           <div>{this.renderCards()}</div>
         </ul>
+
       </div>
     );
   }
