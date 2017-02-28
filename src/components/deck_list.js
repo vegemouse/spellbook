@@ -11,7 +11,7 @@ class DeckList extends Component {
 
   render() {
     return(
-      <div>Deck List Component!</div>
+      <div>Deck List Component</div>
     );
   }
 }
@@ -20,4 +20,4 @@ function mapStateToProps(state) {
   return { null }
 }
 
-export default connect(mapStateToProps, null)(DeckList);
+export default connect(mapStateToProps)(DeckList);
