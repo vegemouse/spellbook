@@ -14,20 +14,14 @@ class NewDeck extends Component {
   }
 
   renderCards() {
-    return(
-      <li>{this.props.foundCards}</li>
-    );
+    return this.props.foundCards.map((card) => {
+      return(
+        <li>
+          {card.name}
+        </li>
+      );
+    });
   }
-
-  // renderCards() {
-  //   return this.props.foundCards.map((card) => {
-  //     return(
-  //       <li>
-  //         {card.name}
-  //       </li>
-  //     );
-  //   });
-  // }
 
   render() {
     return (
