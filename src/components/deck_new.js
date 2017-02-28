@@ -14,20 +14,26 @@ class NewDeck extends Component {
   }
 
   renderCards() {
-    return this.props.foundCards.map((card) => {
-      return(
-        <li>
-          {card.name}
-        </li>
-      );
-    });
+    return(
+      <li>{this.props.foundCards}</li>
+    );
   }
+
+  // renderCards() {
+  //   return this.props.foundCards.map((card) => {
+  //     return(
+  //       <li>
+  //         {card.name}
+  //       </li>
+  //     );
+  //   });
+  // }
 
   render() {
     return (
       <div>
         <div>New Deck Component!</div>
-        <button onClick={this.props.fetchCards}>Get Nissas</button>
+        <span onClick={this.props.fetchCards}>Get Nissas</span>
         <ul>
           <div>{this.renderCards()}</div>
         </ul>

@@ -7,10 +7,14 @@ import reducers from './reducers';
 import routes from './routes';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
+
+const logger = createLogger();
 
 const createStoreWithMiddleware = applyMiddleware(
   promise,
-  thunk
+  thunk,
+  logger
 )(createStore);
 
 
