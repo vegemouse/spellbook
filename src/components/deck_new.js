@@ -12,7 +12,7 @@ class NewDeck extends Component {
     this.state = {
       inputtedCard: '',
       searchSubmitted: false,
-      activeCard: {name: "Select a card"},
+      activeCard: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,20 +24,17 @@ class NewDeck extends Component {
     router: PropTypes.object
   }
 
-  renderCards() {
+  renderResults() {
     var sortedCards = this.props.foundCards.sort(function(a, b) {
       var textA = a.name.toUpperCase();
       var textB = b.name.toUpperCase();
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
-
     if (sortedCards.length < 1 && this.state.searchSubmitted === true) {
       return(
         <span className="error">Sorry, no cards found with that name.</span>
       );
     }
-
-
     return sortedCards.map((card) => {
       if (card.imageUrl) {
         return(
@@ -47,6 +44,23 @@ class NewDeck extends Component {
         );
       }
     });
+  }
+
+  renderActiveCard() {
+    var activeCard = this.state.activeCard;
+    if (activeCard !== null) {
+      return (
+        <div className="new-deck-selected col-lg-3">
+          <img src={activeCard.imageUrl} alt={activeCard.name} />
+          <div className="new-deck-selected-details">
+            <strong>{activeCard.name}</strong>
+            <span>{activeCard.cmc}</span>
+            <div>{activeCard.type}</div>
+            <div>{activeCard.text}</div>
+          </div>
+        </div>
+      );
+    }
   }
 
   handleChange(event) {
@@ -69,23 +83,21 @@ class NewDeck extends Component {
 
   render() {
     return (
-      <div>
-
+      <div className="container new-deck">
         <h2>Build a New Deck</h2>
-          <div className="new-deck-search">
+          <div className="new-deck-search col-lg-5">
             <form onSubmit={this.handleSubmit}>
               <h4>Search Card Name</h4>
               <input type="text" value={this.state.inputtedCard} onChange={this.handleChange} />
               <button type="submit">Search</button>
             </form>
             <ul>
-              {this.renderCards()}
+              {this.renderResults()}
             </ul>
           </div>
 
-          <div className="new-deck-selected">
-            <h3>{this.state.activeCard.name}</h3>
-          </div>
+            {this.renderActiveCard()}
+
       </div>
     );
   }
