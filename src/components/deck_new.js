@@ -21,12 +21,22 @@ class NewDeck extends Component {
   }
 
   renderCards() {
-    return this.props.foundCards.map((card) => {
-      return(
-        <li key={card.id}>
-          {card.name}
-        </li>
-      );
+    var sortedCards = this.props.foundCards.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
+
+
+
+    return sortedCards.map((card) => {
+      if (card.imageUrl) {
+        return(
+          <li key={card.id}>
+            {card.name} - <strong>{card.set}</strong>
+          </li>
+        );
+      }
     });
   }
 
