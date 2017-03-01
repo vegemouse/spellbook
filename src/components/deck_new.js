@@ -9,7 +9,11 @@ import { connect } from 'react-redux';
 class NewDeck extends Component {
   constructor(props) {
     super(props);
-    this.state = {inputtedCard: ''};
+    this.state = {
+      inputtedCard: '',
+      searchSubmitted: false,
+      activeCard: {name: "Select a card"},
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,15 +29,20 @@ class NewDeck extends Component {
       var textA = a.name.toUpperCase();
       var textB = b.name.toUpperCase();
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-  });
+    });
 
+    if (sortedCards.length < 1 && this.state.searchSubmitted === true) {
+      return(
+        <span className="error">Sorry, no cards found with that name.</span>
+      );
+    }
 
 
     return sortedCards.map((card) => {
       if (card.imageUrl) {
         return(
           <li key={card.id}>
-            {card.name} - <strong>{card.set}</strong>
+            <span onClick={this.setActiveCard(card)}><strong>{card.name}</strong> - {card.types[0]} / {card.cmc} CMC</span>
           </li>
         );
       }
@@ -42,32 +51,41 @@ class NewDeck extends Component {
 
   handleChange(event) {
     this.setState({inputtedCard: event.target.value});
+    this.setState({searchSubmitted: false});
   }
 
   handleSubmit(event) {
-    this.props.fetchCards(this.state.inputtedCard)
+    this.setState({inputtedCard: event.target.value});
+    this.props.fetchCards(this.state.inputtedCard);
+    this.setState({searchSubmitted: true});
     event.preventDefault();
+  }
+
+  setActiveCard(card){
+      return function() {
+          this.setState({activeCard: card});
+      }.bind(this);
   }
 
   render() {
     return (
       <div>
-        <div>New Deck Component!</div>
 
-        <form onSubmit={this.handleSubmit}>
+        <h2>Build a New Deck</h2>
+          <div className="new-deck-search">
+            <form onSubmit={this.handleSubmit}>
+              <h4>Search Card Name</h4>
+              <input type="text" value={this.state.inputtedCard} onChange={this.handleChange} />
+              <button type="submit">Search</button>
+            </form>
+            <ul>
+              {this.renderCards()}
+            </ul>
+          </div>
 
-          <label>Card name</label>
-
-          <input type="text" value={this.state.inputtedCard} onChange={this.handleChange} />
-
-          <button type="submit">Get Cards</button>
-
-        </form>
-
-        <ul>
-          <div>{this.renderCards()}</div>
-        </ul>
-
+          <div className="new-deck-selected">
+            <h3>{this.state.activeCard.name}</h3>
+          </div>
       </div>
     );
   }

@@ -9,7 +9,6 @@ export function fetchCards(inputtedCard) {
 
   return (dispatch) => {
     request.then(({data}) => {
-      console.log(data.cards);
       dispatch({ type: FETCH_CARDS, payload: data.cards})
     });
   }
