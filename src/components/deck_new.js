@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
-import { fetchCards } from '../actions/index';
+import { fetchCards, createDeck } from '../actions/index';
 import { Link } from 'react-router';
 import axios from "axios";
 import { connect } from 'react-redux';
@@ -51,7 +51,7 @@ class NewDeck extends Component {
 
   removeCard(card) {
     return function() {
-      var mainDeck = this.state.mainDeckArray.slice();
+      const mainDeck = this.state.mainDeckArray.slice();
       for(var i = mainDeck.length - 1; i>=0; i--) {
         if (mainDeck[i].id === card.id) {
           mainDeck.splice(i, 1);
@@ -63,13 +63,26 @@ class NewDeck extends Component {
 
   removeCardFromSideboard(card) {
     return function() {
-      var sideboard = this.state.sideboardArray.slice();
+      const sideboard = this.state.sideboardArray.slice();
       for(var i = sideboard.length - 1; i>=0; i--) {
         if (sideboard[i].id === card.id) {
           sideboard.splice(i, 1);
         }
       }
       this.setState({sideboardArray: sideboard});
+    }.bind(this);
+  }
+
+  saveDeck() {
+    return function() {
+      const deck = {
+        name: this.state.deckName,
+        format: this.state.deckFormat,
+        description: this.state.deckDescription,
+        cards: this.state.mainDeckArray,
+        sideboard: this.state.sideboardArray
+      }
+      this.props.createDeck(deck);
     }.bind(this);
   }
 
@@ -232,7 +245,7 @@ class NewDeck extends Component {
         </div>
 
         <label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} />
-        <button>Submit</button>
+        <button onClick={this.saveDeck()} className="pull-right">Save</button>
       </div>
     );
   }
@@ -242,4 +255,4 @@ function mapStateToProps(state) {
   return { foundCards: state.cards.foundCards };
 }
 
-export default connect(mapStateToProps, {fetchCards: fetchCards})(NewDeck);
+export default connect(mapStateToProps, {fetchCards: fetchCards, createDeck: createDeck})(NewDeck);
