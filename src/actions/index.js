@@ -20,7 +20,7 @@ export function fetchCards(inputtedCard) {
 
 export function fetchDecks() {
   return dispatch => {
-    Decks.on('value', snapshot => {
+    Decks.child('decks').on('value', snapshot => {
       dispatch({
         type: FETCH_DECKS,
         payload: snapshot.val()
@@ -30,5 +30,5 @@ export function fetchDecks() {
 }
 
 export function createDeck(deck) {
-  return dispatch => Decks.push(deck);
+  return dispatch => Decks.child('decks').push(deck);
 }
