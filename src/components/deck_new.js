@@ -75,7 +75,7 @@ class NewDeck extends Component {
   getColors(deck) {
     var colorsArray = [];
     deck.map((card) => {
-      card.colors.map((color) => {
+      card.colorIdentity.map((color) => {
         colorsArray.push(color);
       });
     });
@@ -166,7 +166,7 @@ class NewDeck extends Component {
 
   render() {
     return (
-      <div className="container new-deck">
+      <div className="container deck">
         <h2>Build a New Deck</h2>
         {this.checkError()}
         <div className="deck_inputs row">
@@ -192,31 +192,35 @@ class NewDeck extends Component {
 
           <CardSearch />
 
-          <div className="col-md-3">
+          <div className="col-md-3 selected_card">
             {this.props.selectedCard &&
-              <div className="new-deck-selected">
-                <img src={this.props.selectedCard.imageUrl} alt={this.props.selectedCard.name} />
-                <div className="new-deck-selected-details">
-                  <strong>{this.props.selectedCard.name}</strong>
-                  <span className="pull-right">{this.props.selectedCard.cmc}</span>
-                  <div>{this.props.selectedCard.type}</div>
-                  <div>{this.props.selectedCard.text}</div>
-                  <button onClick={this.addCard(this.props.selectedCard)}>+1</button>
-                  <button onClick={this.addFour(this.props.selectedCard)}>+4</button>
-                  <button className="pull-right" onClick={this.addSideboard(this.props.selectedCard)}>+SB</button>
+              <div>
+                <div className="selected_card_image"><img src={this.props.selectedCard.imageUrl} alt={this.props.selectedCard.name} /></div>
+                <div className="selected_card_details">
+                  <div className="selected_card_details_head"><strong>{this.props.selectedCard.name}</strong>
+                  <span className="pull-right cmc">{this.props.selectedCard.cmc}</span></div>
+                  <div className="selected_card_details_type">{this.props.selectedCard.type}</div>
+                  <div className="selected_card_details_text">{this.props.selectedCard.text}</div>
+                  <div className="selected_card_buttons">
+                    <button onClick={this.addCard(this.props.selectedCard)}>+1</button>
+                    <button onClick={this.addFour(this.props.selectedCard)}>+4</button>
+                    <button className="pull-right" onClick={this.addSideboard(this.props.selectedCard)}>+SB</button>
+                  </div>
                 </div>
               </div>
             }
           </div>
 
-          <div className="col-md-4">
-            <strong>{this.state.deckName}</strong><span className="pull-right">{this.state.mainDeckArray.length} cards</span>
+          <div className="col-md-4 deck_output">
+            <div className="deck_output_header"><strong>{this.state.deckName}</strong><span>{this.state.mainDeckArray.length} cards</span></div>
             <br />
-            <strong>Main Deck</strong>
-            {this.renderDeck()}
-            <br />
-            <strong>Sideboard</strong>
-            {this.renderSideboard()}
+            <div className="deck_output_cards">
+              <h5>Main Deck</h5>
+              {this.renderDeck()}
+              <br />
+              <h5>Sideboard</h5>
+              {this.renderSideboard()}
+            </div>
           </div>
         </div>
 

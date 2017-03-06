@@ -46,7 +46,7 @@ class CardSearch extends Component {
         return(
           <li key={card.id} onClick={() => this.handleCardClick(card)}>
             <strong>{card.name}</strong>
-            <span className="pull-right">{card.types[0]} / {card.cmc} CMC</span>
+            <span className="pull-right">{card.types[0]}</span>
           </li>
         );
       }
@@ -55,11 +55,11 @@ class CardSearch extends Component {
 
   render() {
     return(
-      <div className="new-deck-search col-md-5">
+      <div className="card_search col-md-5">
         <form onSubmit={this.handleSubmit}>
           <h4>Search Card Name</h4>
-          <input type="text" value={this.state.inputtedCard} onChange={this.handleSearchChange} />
-          <button type="submit">Search</button>
+          <div className="card_search_input"><input type="text" value={this.state.inputtedCard} onChange={this.handleSearchChange} />
+          <button type="submit"><i className="fa fa-search" aria-hidden="true"></i></button></div>
         </form>
         <ul>
           {this.renderResults()}

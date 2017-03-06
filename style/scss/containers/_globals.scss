@@ -1,3 +1,22 @@
 body {
   background-color: $black;
 }
+
+* {
+
+}
+
+input, select {
+  border-radius: 50px;
+  border: 0;
+  height: 29px;
+  width: 220px;
+  padding: 0px 7px;
+  transition: background-color 150ms ease-out;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  &:focus {
+    outline: 0;
+    background-color: $white;
+  }
+}
