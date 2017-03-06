@@ -145,14 +145,17 @@
       font-family: "Roboto", sans-serif;
     }
   }
-  h5 {
-    color: black;
-  }
   &_cards {
     padding: 5px;
     padding-bottom: 10px;
     background-color: white;
     overflow-y: scroll;
     height: 80%;
+    font-family: "Roboto", sans-serif;
+    color: black;
+    span {
+      margin: 5px;
+      font-size: 14px;
+    }
   }
 }

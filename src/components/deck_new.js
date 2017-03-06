@@ -135,9 +135,9 @@ class NewDeck extends Component {
       if (card.imageUrl) {
         return(
           <div>
-            <li key={card.id}>
-              <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong> - {card.types[0]} / {card.cmc} CMC</span><button onClick={this.removeCard(card)}>-</button>
-            </li>
+            <span key={card.id}>
+              <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCard(card)}>-</button>
+            </span>
           </div>
         );
       }
