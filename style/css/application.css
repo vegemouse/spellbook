@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto+Slab:400,700|Roboto:400,700");
+h1 {
+  font-family: 'Roboto Slab', serif;
+  color: white; }
+
+h2 {
+  font-family: 'Roboto Slab', serif;
+  color: white;
+  font-size: 28px; }
+
+label {
+  font-family: 'Oswald', sans-serif;
+  color: #DAFFED;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px; }
+
+body {
+  background-color: #090909; }
+
+.deck_inputs {
+  background-color: #558B6E;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin: 20px 0px 0 0px; }
+  .deck_inputs:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    background-color: #558B6E;
+    width: 100vw;
+    height: 54px;
+    z-index: -10; }
+  .deck_inputs_group {
+    margin-right: 50px; }
+  .deck_inputs input, .deck_inputs select {
+    border-radius: 50px;
+    border: 0;
+    height: 29px;
+    width: 220px;
+    margin: 0 10px; }
+
+/*# sourceMappingURL=application.css.map */

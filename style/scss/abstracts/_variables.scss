@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto+Slab:400,700|Roboto:400,700');
+
+
+// colors
+$white: #DAFFED;
+$blue: #495867;
+$magenta: #270722;
+$black: #090909;
+$green: #558B6E;
+
+// Fonts
+h1 {
+  font-family: 'Roboto Slab', serif;
+  color: white;
+}
+
+h2 {
+  font-family: 'Roboto Slab', serif;
+  color: white;
+  font-size: 28px;
+}
+
+label {
+  font-family: 'Oswald', sans-serif;
+  color: $white;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}

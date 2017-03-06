@@ -18,6 +18,7 @@ class NewDeck extends Component {
       deckName: '',
       deckFormat: '',
       deckDescription: '',
+      error: false
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -71,6 +72,22 @@ class NewDeck extends Component {
     }.bind(this);
   }
 
+  getColors(deck) {
+    var colorsArray = [];
+    deck.map((card) => {
+      card.colors.map((color) => {
+        colorsArray.push(color);
+      });
+    });
+    return colorsArray;
+  }
+
+  checkError() {
+    if (this.state.error) {
+      return <div className="row error">Please ensure all fields are filled out.</div>;
+    }
+  }
+
   saveDeck() {
     return function() {
       if(this.state.deckName && this.state.deckFormat && this.state.deckDescription && this.state.mainDeckArray.length > 0) {
@@ -79,13 +96,14 @@ class NewDeck extends Component {
           format: this.state.deckFormat,
           description: this.state.deckDescription,
           cards: this.state.mainDeckArray,
-          sideboard: this.state.sideboardArray
+          sideboard: this.state.sideboardArray,
+          colors: this.getColors(this.state.mainDeckArray)
         }
         this.props.createDeck(deck).then(() => {
       this.context.router.push('/');
     });
       } else {
-        alert ("Please ensure all information is filled out.");
+        this.setState({error: true})
       }
     }.bind(this);
   }
@@ -150,22 +168,24 @@ class NewDeck extends Component {
     return (
       <div className="container new-deck">
         <h2>Build a New Deck</h2>
-        <div>
-          <label>Deck Name</label><input type="text" value={this.state.deckName} onChange={this.handleNameChange} />
-          <label>Format</label>
-          <select value={this.state.deckFormat} onChange={this.handleFormatChange}>
-            <option value="">Select a Format</option>
-            <option value="Standard">Standard</option>
-            <option value="Modern">Modern</option>
-            <option value="Legacy">Legacy</option>
-            <option value="Vintage">Vintage</option>
-            <option value="EDH/Commander">EDH/Commander</option>
-            <option value="Pauper">Pauper</option>
-            <option value="Peasant">Peasant</option>
-            <option value="Archenemy">Archenemy</option>
-            <option value="Vanguard">Vanguard</option>
-            <option value="Planechase">Planechase</option>
-          </select>
+        {this.checkError()}
+        <div className="deck_inputs row">
+          <div className="deck_inputs_group"><label>Deck Name</label><input type="text" value={this.state.deckName} onChange={this.handleNameChange} /></div>
+          <div className="deck_inputs_group"><label>Format</label>
+            <select value={this.state.deckFormat} onChange={this.handleFormatChange}>
+              <option value="">Select a Format</option>
+              <option value="Standard">Standard</option>
+              <option value="Modern">Modern</option>
+              <option value="Legacy">Legacy</option>
+              <option value="Vintage">Vintage</option>
+              <option value="EDH/Commander">EDH/Commander</option>
+              <option value="Pauper">Pauper</option>
+              <option value="Peasant">Peasant</option>
+              <option value="Archenemy">Archenemy</option>
+              <option value="Vanguard">Vanguard</option>
+              <option value="Planechase">Planechase</option>
+            </select>
+          </div>
         </div>
 
         <div className="row">

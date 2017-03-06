@@ -1,0 +1,30 @@
+.deck_inputs {
+  background-color: $green;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin: 20px 0px 0 0px;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    background-color: $green;
+    width: 100vw;
+    height: 54px;
+    z-index: -10;
+  }
+
+  &_group {
+    margin-right: 50px;
+  }
+
+  input, select {
+    border-radius: 50px;
+    border: 0;
+    height: 29px;
+    width: 220px;
+    margin: 0 10px;
+  }
+}
