@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
-import { fetchCards, createDeck } from '../actions/index';
+import { fetchCards, createDeck, selectCard } from '../actions/index';
 import { Link } from 'react-router';
 import axios from "axios";
 import { connect } from 'react-redux';
+import CardSearch from './card_search';
 
 
 class NewDeck extends Component {
@@ -12,7 +13,6 @@ class NewDeck extends Component {
     this.state = {
       inputtedCard: '',
       searchSubmitted: false,
-      activeCard: null,
       mainDeckArray: [],
       sideboardArray: [],
       deckName: '',
@@ -20,8 +20,6 @@ class NewDeck extends Component {
       deckDescription: '',
     };
 
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleFormatChange = this.handleFormatChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -75,32 +73,20 @@ class NewDeck extends Component {
 
   saveDeck() {
     return function() {
-      const deck = {
-        name: this.state.deckName,
-        format: this.state.deckFormat,
-        description: this.state.deckDescription,
-        cards: this.state.mainDeckArray,
-        sideboard: this.state.sideboardArray
+      if(this.state.deckName && this.state.deckFormat && this.state.deckDescription && this.state.mainDeckArray.length > 0) {
+        const deck = {
+          name: this.state.deckName,
+          format: this.state.deckFormat,
+          description: this.state.deckDescription,
+          cards: this.state.mainDeckArray,
+          sideboard: this.state.sideboardArray
+        }
+        this.props.createDeck(deck).then(() => {
+      this.context.router.push('/');
+    });
+      } else {
+        alert ("Please ensure all information is filled out.");
       }
-      this.props.createDeck(deck);
-    }.bind(this);
-  }
-
-  handleSearchChange(event) {
-    this.setState({inputtedCard: event.target.value});
-    this.setState({searchSubmitted: false});
-  }
-
-  handleSubmit(event) {
-    this.setState({inputtedCard: event.target.value});
-    this.props.fetchCards(this.state.inputtedCard);
-    this.setState({searchSubmitted: true});
-    event.preventDefault();
-  }
-
-  setActiveCard(card){
-    return function() {
-        this.setState({activeCard: card});
     }.bind(this);
   }
 
@@ -116,29 +102,9 @@ class NewDeck extends Component {
     this.setState({deckDescription: event.target.value});
   }
 
-  renderResults() {
-    var sortedCards = this.props.foundCards.sort(function(a, b) {
-      var textA = a.name.toUpperCase();
-      var textB = b.name.toUpperCase();
-      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-    });
-    if (sortedCards.length < 1 && this.state.searchSubmitted === true) {
-      return(
-        <span className="error">Sorry, no cards found with that name.</span>
-      );
-    }
-    return sortedCards.map((card) => {
-      if (card.imageUrl) {
-        return(
-          <li key={card.id} onClick={this.setActiveCard(card)}>
-            <strong>{card.name}</strong>
-            <span className="pull-right">{card.types[0]} / {card.cmc} CMC</span>
-          </li>
-        );
-      }
-    });
+  handleCardClick(card) {
+    this.props.selectCard(card);
   }
-
 
   renderDeck() {
     var sortedCards = this.state.mainDeckArray.sort(function(a, b) {
@@ -152,7 +118,7 @@ class NewDeck extends Component {
         return(
           <div>
             <li key={card.id}>
-              <span onClick={this.setActiveCard(card)}><strong>{card.name}</strong> - {card.types[0]} / {card.cmc} CMC</span><button onClick={this.removeCard(card)}>-</button>
+              <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong> - {card.types[0]} / {card.cmc} CMC</span><button onClick={this.removeCard(card)}>-</button>
             </li>
           </div>
         );
@@ -172,7 +138,7 @@ class NewDeck extends Component {
         return(
           <div>
             <li key={card.id}>
-              <span onClick={this.setActiveCard(card)}><strong>{card.name}</strong> - {card.types[0]} / {card.cmc} CMC</span><button onClick={this.removeCardFromSideboard(card)}>-</button>
+              <strong>{card.name}</strong> - {card.types[0]} / {card.cmc} CMC<button onClick={this.removeCardFromSideboard(card)}>-</button>
             </li>
           </div>
         );
@@ -180,8 +146,6 @@ class NewDeck extends Component {
     });
   }
 
-
-  // Main Render Function
   render() {
     return (
       <div className="container new-deck">
@@ -205,29 +169,21 @@ class NewDeck extends Component {
         </div>
 
         <div className="row">
-          <div className="new-deck-search col-md-5">
-            <form onSubmit={this.handleSubmit}>
-              <h4>Search Card Name</h4>
-              <input type="text" value={this.state.inputtedCard} onChange={this.handleSearchChange} />
-              <button type="submit">Search</button>
-            </form>
-            <ul>
-              {this.renderResults()}
-            </ul>
-          </div>
+
+          <CardSearch />
 
           <div className="col-md-3">
-            {this.state.activeCard &&
+            {this.props.selectedCard &&
               <div className="new-deck-selected">
-                <img src={this.state.activeCard.imageUrl} alt={this.state.activeCard.name} />
+                <img src={this.props.selectedCard.imageUrl} alt={this.props.selectedCard.name} />
                 <div className="new-deck-selected-details">
-                  <strong>{this.state.activeCard.name}</strong>
-                  <span className="pull-right">{this.state.activeCard.cmc}</span>
-                  <div>{this.state.activeCard.type}</div>
-                  <div>{this.state.activeCard.text}</div>
-                  <button onClick={this.addCard(this.state.activeCard)}>+1</button>
-                  <button onClick={this.addFour(this.state.activeCard)}>+4</button>
-                  <button className="pull-right" onClick={this.addSideboard(this.state.activeCard)}>+SB</button>
+                  <strong>{this.props.selectedCard.name}</strong>
+                  <span className="pull-right">{this.props.selectedCard.cmc}</span>
+                  <div>{this.props.selectedCard.type}</div>
+                  <div>{this.props.selectedCard.text}</div>
+                  <button onClick={this.addCard(this.props.selectedCard)}>+1</button>
+                  <button onClick={this.addFour(this.props.selectedCard)}>+4</button>
+                  <button className="pull-right" onClick={this.addSideboard(this.props.selectedCard)}>+SB</button>
                 </div>
               </div>
             }
@@ -245,14 +201,18 @@ class NewDeck extends Component {
         </div>
 
         <label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} />
-        <button onClick={this.saveDeck()} className="pull-right">Save</button>
+
+        <div className="pull-right">
+          <Link to="/" className="btn">Cancel</Link>
+          <button className="btn" onClick={this.saveDeck()}>Save</button>
+        </div>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { foundCards: state.cards.foundCards };
+  return { selectedCard: state.cards.selectedCard};
 }
 
-export default connect(mapStateToProps, {fetchCards: fetchCards, createDeck: createDeck})(NewDeck);
+export default connect(mapStateToProps, {fetchCards: fetchCards, createDeck: createDeck, selectCard: selectCard})(NewDeck);

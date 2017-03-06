@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchDecks } from '../actions/index';
+import  Deck from './deck';
 import _ from 'lodash';
 
 class DeckList extends Component {
@@ -10,17 +11,11 @@ class DeckList extends Component {
   }
 
   renderDecks() {
-    for(var i in this.props.decks) {
-      return (
-        <div>{this.props.decks[i]}</div>
-      )
-    }
-  }
-
-  renderDecks() {
     return _.map(this.props.decks, (deck, key) => {
       return (
-        <div>{deck.name}</div>
+        <div key={key} className="col-md-4">
+          <Deck deck={deck}/>
+        </div>
       )
     });
   }
@@ -28,7 +23,11 @@ class DeckList extends Component {
 
   render() {
     return(
-      <div>{this.renderDecks()}</div>
+      <div className="container">
+        <div className="row">
+          {this.renderDecks()}
+        </div>
+      </div>
     );
   }
 }
