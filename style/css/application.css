@@ -1435,11 +1435,78 @@ input, select {
     padding-bottom: 10px;
     background-color: white;
     overflow-y: scroll;
-    height: 80%;
+    height: 89%;
     font-family: "Roboto", sans-serif;
     color: black; }
     .deck_output_cards span {
       margin: 5px;
       font-size: 14px; }
+      .deck_output_cards span button {
+        border: 0;
+        background-color: transparent;
+        color: red;
+        font-size: 14px;
+        float: right;
+        padding: 0;
+        margin: 0;
+        margin-right: 5px; }
+        .deck_output_cards span button:hover {
+          cursor: pointer; }
+
+.error {
+  color: red; }
+
+.deck_bottom {
+  margin: 30px -15px;
+  display: flex;
+  align-items: flex-end; }
+  .deck_bottom label {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: -15px; }
+  .deck_bottom textarea {
+    width: 380px;
+    height: 138px;
+    font-family: "Roboto", sans-serif;
+    margin-left: -15px; }
+  .deck_bottom .deck_bottom_buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+    margin-right: -15px; }
+  .deck_bottom .cancel_button {
+    background-color: #270722;
+    transition: background-color 200ms ease-out;
+    border: 0;
+    color: white;
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    font-family: "Oswald", sans-serif; }
+    .deck_bottom .cancel_button:hover, .deck_bottom .cancel_button:active, .deck_bottom .cancel_button:focus {
+      background-color: black;
+      outline: 0;
+      cursor: pointer; }
+  .deck_bottom .save_button {
+    background-color: #558B6E;
+    transition: background-color 200ms ease-out;
+    border: 0;
+    color: white;
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    margin-right: 30px;
+    font-family: "Oswald", sans-serif; }
+    .deck_bottom .save_button:hover, .deck_bottom .save_button:active, .deck_bottom .save_button:focus {
+      background-color: #253c2f;
+      outline: 0;
+      cursor: pointer; }
 
 /*# sourceMappingURL=application.css.map */

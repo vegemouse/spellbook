@@ -84,7 +84,7 @@ class NewDeck extends Component {
 
   checkError() {
     if (this.state.error) {
-      return <div className="row error">Please ensure all fields are filled out.</div>;
+      return <div className="row error">*Please ensure all fields are filled out.</div>;
     }
   }
 
@@ -136,7 +136,7 @@ class NewDeck extends Component {
         return(
           <div>
             <span key={card.id}>
-              <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCard(card)}>-</button>
+              <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCard(card)}><i className="fa fa-minus" aria-hidden="true"></i></button>
             </span>
           </div>
         );
@@ -155,9 +155,9 @@ class NewDeck extends Component {
       if (card.imageUrl) {
         return(
           <div>
-            <li key={card.id}>
-              <strong>{card.name}</strong> - {card.types[0]} / {card.cmc} CMC<button onClick={this.removeCardFromSideboard(card)}>-</button>
-            </li>
+            <span key={card.id}>
+              <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCardFromSideboard(card)}><i className="fa fa-minus" aria-hidden="true"></i></button>
+            </span>
           </div>
         );
       }
@@ -224,11 +224,15 @@ class NewDeck extends Component {
           </div>
         </div>
 
-        <label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} />
+        <div className="deck_bottom row">
+          <div className="col-md-6"><label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} /></div>
 
-        <div className="pull-right">
-          <Link to="/" className="btn">Cancel</Link>
-          <button className="btn" onClick={this.saveDeck()}>Save</button>
+          <div className="col-md-6">
+            <div className="deck_bottom_buttons">
+              <span className="save_button" onClick={this.saveDeck()}>Save Deck</span>
+              <Link to="/" className="cancel_button">Cancel</Link>
+            </div>
+          </div>
         </div>
       </div>
     );
