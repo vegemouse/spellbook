@@ -1,0 +1,42 @@
+.deck_item {
+  background-color: $white;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  &_head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  h3 {
+    color: black;
+    margin-bottom: 5px;
+  }
+  &_format {
+    font-family: "Oswald", sans-serif;
+  }
+  &_colors {
+    height: 40px;
+    width: 120px;
+    display: flex;
+    .color {
+      height: 100%;
+      flex: 1;
+    }
+  }
+  &_bottom {
+    display: flex;
+    p {
+      width: 50%;
+      margin: 0;
+      padding-left: 15px;
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+  &_card {
+    width: 50%;
+    height: 200px;
+    background-position: -62px -59px;
+    background-size: 200%;
+  }
+}

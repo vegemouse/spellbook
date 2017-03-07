@@ -1509,4 +1509,38 @@ input, select {
       outline: 0;
       cursor: pointer; }
 
+.deck_item {
+  background-color: #DAFFED;
+  padding: 10px;
+  font-family: "Roboto", sans-serif; }
+  .deck_item_head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; }
+  .deck_item h3, .deck_item .deck_output_header strong, .deck_output_header .deck_item strong {
+    color: black;
+    margin-bottom: 5px; }
+  .deck_item_format {
+    font-family: "Oswald", sans-serif; }
+  .deck_item_colors {
+    height: 40px;
+    width: 120px;
+    display: flex; }
+    .deck_item_colors .color {
+      height: 100%;
+      flex: 1; }
+  .deck_item_bottom {
+    display: flex; }
+    .deck_item_bottom p {
+      width: 50%;
+      margin: 0;
+      padding-left: 15px;
+      font-size: 14px;
+      line-height: 19px; }
+  .deck_item_card {
+    width: 50%;
+    height: 200px;
+    background-position: -62px -59px;
+    background-size: 200%; }
+
 /*# sourceMappingURL=application.css.map */

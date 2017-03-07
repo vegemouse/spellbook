@@ -75,11 +75,18 @@ class NewDeck extends Component {
   getColors(deck) {
     var colorsArray = [];
     deck.map((card) => {
-      card.colorIdentity.map((color) => {
-        colorsArray.push(color);
-      });
+      if (card.colorIdentity) {
+        card.colorIdentity.map((color) => {
+          colorsArray.push(color);
+        });
+      }
     });
-    return colorsArray;
+    
+    var colors = colorsArray.filter(function(elem, pos) {
+      return colorsArray.indexOf(elem) == pos;
+    });
+
+    return colors;
   }
 
   checkError() {
