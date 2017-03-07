@@ -1287,7 +1287,8 @@ h5 {
   margin: 5px; }
 
 body {
-  background-color: #090909; }
+  background-color: #090909;
+  overflow-x: hidden; }
 
 input, select {
   border-radius: 50px;
@@ -1301,6 +1302,37 @@ input, select {
   input:focus, select:focus {
     outline: 0;
     background-color: #DAFFED; }
+
+header {
+  background-color: #495867;
+  height: 95px;
+  padding: 0 0 0 15px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px; }
+  header .header_buttons_newdeck {
+    display: block; }
+    header .header_buttons_newdeck a:first-of-type {
+      background-color: #558B6E;
+      transition: background-color 200ms ease-out;
+      border: 0;
+      color: white;
+      padding: 10px;
+      text-decoration: none; }
+      header .header_buttons_newdeck a:first-of-type:hover, header .header_buttons_newdeck a:first-of-type:active, header .header_buttons_newdeck a:first-of-type:focus {
+        background-color: #253c2f;
+        outline: 0;
+        cursor: pointer; }
+  header:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    background-color: #495867;
+    width: 100vw;
+    height: 95px;
+    z-index: -10; }
 
 .deck_inputs {
   background-color: #558B6E;
@@ -1512,7 +1544,8 @@ input, select {
 .deck_item {
   background-color: #DAFFED;
   padding: 10px;
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 30px; }
   .deck_item_head {
     display: flex;
     justify-content: space-between;

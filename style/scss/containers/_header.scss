@@ -1,0 +1,27 @@
+header {
+  background-color: $blue;
+  height: 95px;
+  padding: 0 0 0 15px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  .header_buttons_newdeck {
+    display: block;
+    a:first-of-type {
+      @include button($green);
+      padding: 10px;
+      text-decoration: none;
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    background-color: $blue;
+    width: 100vw;
+    height: 95px;
+    z-index: -10;
+  }
+}
