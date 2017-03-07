@@ -1320,7 +1320,7 @@ header {
     display: block; }
     header .header_buttons_newdeck a:first-of-type {
       background-color: #558B6E;
-      transition: background-color 200ms ease-out;
+      transition: all 200ms ease-out;
       border: 0;
       color: white;
       padding: 10px;
@@ -1328,7 +1328,8 @@ header {
       header .header_buttons_newdeck a:first-of-type:hover, header .header_buttons_newdeck a:first-of-type:active, header .header_buttons_newdeck a:first-of-type:focus {
         background-color: #253c2f;
         outline: 0;
-        cursor: pointer; }
+        cursor: pointer;
+        transform: scale(1.1); }
   header:before {
     content: "";
     position: absolute;
@@ -1340,7 +1341,7 @@ header {
 
 footer {
   background-color: #495867;
-  height: 100px;
+  height: 130px;
   width: 100%;
   color: white;
   box-sizing: border-box; }
@@ -1350,13 +1351,15 @@ footer {
     background-color: #495867;
     left: 0;
     width: 100vw;
-    height: 100px;
+    height: 130px;
     z-index: -10; }
   footer .footer_content {
     text-align: center;
-    padding-top: 20px; }
+    padding-top: 15px; }
     footer .footer_content a {
       color: #a7ffd4; }
+    footer .footer_content i {
+      font-size: 2em; }
 
 .deck_inputs {
   background-color: #558B6E;
@@ -1397,13 +1400,14 @@ footer {
       border: 0;
       color: #DAFFED;
       background-color: #558B6E;
-      transition: background-color 200ms ease-out;
+      transition: all 200ms ease-out;
       border: 0;
       color: white; }
       .card_search_input button:hover, .card_search_input button:active, .card_search_input button:focus {
         background-color: #253c2f;
         outline: 0;
-        cursor: pointer; }
+        cursor: pointer;
+        transform: scale(1.1); }
   .card_search ul {
     background-color: white;
     height: 75%;
@@ -1449,7 +1453,7 @@ footer {
     margin-top: 15px; }
     .selected_card_buttons button {
       background-color: #558B6E;
-      transition: background-color 200ms ease-out;
+      transition: all 200ms ease-out;
       border: 0;
       color: white;
       height: 43px;
@@ -1459,7 +1463,8 @@ footer {
       .selected_card_buttons button:hover, .selected_card_buttons button:active, .selected_card_buttons button:focus {
         background-color: #253c2f;
         outline: 0;
-        cursor: pointer; }
+        cursor: pointer;
+        transform: scale(1.1); }
       .selected_card_buttons button:first-of-type {
         margin-right: 10px; }
 
@@ -1543,7 +1548,7 @@ footer {
     margin-right: -15px; }
   .deck_bottom .cancel_button {
     background-color: #270722;
-    transition: background-color 200ms ease-out;
+    transition: all 200ms ease-out;
     border: 0;
     color: white;
     height: 40px;
@@ -1556,10 +1561,11 @@ footer {
     .deck_bottom .cancel_button:hover, .deck_bottom .cancel_button:active, .deck_bottom .cancel_button:focus {
       background-color: black;
       outline: 0;
-      cursor: pointer; }
+      cursor: pointer;
+      transform: scale(1.1); }
   .deck_bottom .save_button {
     background-color: #558B6E;
-    transition: background-color 200ms ease-out;
+    transition: all 200ms ease-out;
     border: 0;
     color: white;
     height: 40px;
@@ -1573,13 +1579,15 @@ footer {
     .deck_bottom .save_button:hover, .deck_bottom .save_button:active, .deck_bottom .save_button:focus {
       background-color: #253c2f;
       outline: 0;
-      cursor: pointer; }
+      cursor: pointer;
+      transform: scale(1.1); }
 
 .deck_item {
   background-color: #DAFFED;
   padding: 10px;
   font-family: "Roboto", sans-serif;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  transition: transform 200ms ease-in-out; }
   .deck_item_head {
     display: flex;
     justify-content: space-between;
@@ -1609,5 +1617,7 @@ footer {
     height: 200px;
     background-position: -62px -59px;
     background-size: 200%; }
+  .deck_item:hover {
+    transform: scale(1.05); }
 
 /*# sourceMappingURL=application.css.map */

@@ -3,6 +3,7 @@
   padding: 10px;
   font-family: "Roboto", sans-serif;
   margin-bottom: 30px;
+  transition: transform 200ms ease-in-out;
   &_head {
     display: flex;
     justify-content: space-between;
@@ -39,5 +40,8 @@
     height: 200px;
     background-position: -62px -59px;
     background-size: 200%;
+  }
+  &:hover {
+    transform: scale(1.05);
   }
 }

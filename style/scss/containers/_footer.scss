@@ -1,6 +1,6 @@
 footer {
   background-color: $blue;
-  height: 100px;
+  height: 130px;
   width: 100%;
   color: white;
   box-sizing: border-box;
@@ -10,14 +10,17 @@ footer {
     background-color: $blue;
     left: 0;
     width: 100vw;
-    height: 100px;
+    height: 130px;
     z-index: -10;
   }
   .footer_content {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
     a {
       color: darken($white, 10%);
+    }
+    i {
+      font-size: 2em;
     }
   }
 }

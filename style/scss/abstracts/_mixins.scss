@@ -1,11 +1,12 @@
 @mixin button($color) {
   background-color: $color;
-  transition: background-color 200ms ease-out;
+  transition: all 200ms ease-out;
   border: 0;
   color: white;
   &:hover, &:active, &:focus {
     background-color: darken($color, 25%);
     outline: 0;
-    cursor: pointer
+    cursor: pointer;
+    transform: scale(1.1);
   }
 }

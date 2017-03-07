@@ -26,6 +26,7 @@ class DeckList extends Component {
   render() {
     return(
       <div className="container">
+      <h2>All Decks</h2>
         <div className="row">
           {this.renderDecks()}
         </div>
