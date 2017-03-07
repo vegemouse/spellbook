@@ -52,11 +52,11 @@ export default class Deck extends Component {
           {this.renderCard()}
           <p>
           <strong>{this.props.deck.cards.length} cards</strong><br />
-          {this.props.deck.description.slice(0, 170)}... <Link><strong>More Info</strong></Link>
+          {this.props.deck.description.slice(0, 170)}... <strong>More Info</strong>
           </p>
         </div>
-
       </div>
+
     );
   }
 }

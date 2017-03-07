@@ -3,8 +3,9 @@ body {
   overflow-x: hidden;
 }
 
-* {
-
+a {
+  text-decoration: inherit;
+  color: inherit;
 }
 
 input, select {

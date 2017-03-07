@@ -1290,6 +1290,10 @@ body {
   background-color: #090909;
   overflow-x: hidden; }
 
+a {
+  text-decoration: inherit;
+  color: inherit; }
+
 input, select {
   border-radius: 50px;
   border: 0;
@@ -1333,6 +1337,26 @@ header {
     width: 100vw;
     height: 95px;
     z-index: -10; }
+
+footer {
+  background-color: #495867;
+  height: 100px;
+  width: 100%;
+  color: white;
+  box-sizing: border-box; }
+  footer:before {
+    content: "";
+    position: absolute;
+    background-color: #495867;
+    left: 0;
+    width: 100vw;
+    height: 100px;
+    z-index: -10; }
+  footer .footer_content {
+    text-align: center;
+    padding-top: 20px; }
+    footer .footer_content a {
+      color: #a7ffd4; }
 
 .deck_inputs {
   background-color: #558B6E;
@@ -1391,10 +1415,12 @@ header {
       list-style-type: none;
       padding: 5px;
       margin: 0;
-      transition: background-color 200ms ease-out; }
+      transition: background-color 200ms ease-out;
+      transition: transform 100ms ease-out; }
       .card_search ul li:hover {
         background-color: #DAFFED;
-        cursor: pointer; }
+        cursor: pointer;
+        transform: scale(1.02); }
 
 .selected_card {
   color: white;
@@ -1469,7 +1495,15 @@ header {
     overflow-y: scroll;
     height: 89%;
     font-family: "Roboto", sans-serif;
-    color: black; }
+    color: black;
+    overflow-x: hidden; }
+    .deck_output_cards div {
+      padding: 3px 0;
+      transition: transform 100ms ease-out; }
+      .deck_output_cards div:hover {
+        background-color: #DAFFED;
+        cursor: pointer;
+        transform: scale(1.05); }
     .deck_output_cards span {
       margin: 5px;
       font-size: 14px; }

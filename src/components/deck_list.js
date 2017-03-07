@@ -13,10 +13,12 @@ class DeckList extends Component {
   renderDecks() {
     return _.map(this.props.decks, (deck, key) => {
       return (
-        <div key={key} className="col-md-4">
-          <Deck deck={deck}/>
-        </div>
-      )
+        <Link to={"decks/" + key}>
+          <div key={key} className="col-md-4">
+            <Deck deck={deck}/>
+          </div>
+        </Link>
+      );
     });
   }
 

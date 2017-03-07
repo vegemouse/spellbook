@@ -1,0 +1,23 @@
+footer {
+  background-color: $blue;
+  height: 100px;
+  width: 100%;
+  color: white;
+  box-sizing: border-box;
+  &:before {
+    content: "";
+    position: absolute;
+    background-color: $blue;
+    left: 0;
+    width: 100vw;
+    height: 100px;
+    z-index: -10;
+  }
+  .footer_content {
+    text-align: center;
+    padding-top: 20px;
+    a {
+      color: darken($white, 10%);
+    }
+  }
+}
