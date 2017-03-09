@@ -16,7 +16,10 @@
 * React
 * Redux
 * React Router
+* Webpack
+* Babel
 * Sass
+* Sketch
 * Bootstrap Grid
 
 ### License
