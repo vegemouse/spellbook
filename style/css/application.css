@@ -1709,6 +1709,24 @@ footer {
   align-items: center;
   font-family: "Oswald", sans-serif; }
 
+.sample_hand {
+  width: 100%; }
+  .sample_hand img {
+    width: 14.28%;
+    align-items: baseline; }
+
+.hand_button {
+  background-color: #558B6E;
+  transition: all 200ms ease-out;
+  border: 0;
+  color: white;
+  padding: 10px; }
+  .hand_button:hover, .hand_button:active, .hand_button:focus {
+    background-color: #253c2f;
+    outline: 0;
+    cursor: pointer;
+    transform: scale(1.1); }
+
 .intro {
   background-color: black;
   background-image: url(../../img/ponder.jpg);

@@ -56,3 +56,16 @@
   align-items: center;
   font-family: "Oswald", sans-serif;
 }
+
+.sample_hand {
+  width: 100%;
+  img {
+    width: 14.28%;
+    align-items: baseline;
+  }
+}
+
+.hand_button {
+  @include button($green);
+  padding: 10px;
+}

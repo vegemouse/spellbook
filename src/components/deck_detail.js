@@ -4,12 +4,14 @@ import { fetchDecks, fetchDeck } from '../actions/index';
 import { Link } from 'react-router';
 import PieChart from 'react-simple-pie-chart';
 import _ from 'lodash';
+import SampleHand from './sample_hand';
 
 class DeckDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeCard: {},
+      handShown: false
     }
   }
   static contextTypes = {
@@ -22,6 +24,14 @@ class DeckDetail extends Component {
 
   handleCardClick(card) {
     this.setState({activeCard: card});
+  }
+
+  handleHandClick() {
+    if (!this.state.handShown) {
+      this.setState({handShown: true});
+    } else {
+      this.setState({handShown: false})
+    }
   }
 
   renderColors() {
@@ -125,7 +135,6 @@ class DeckDetail extends Component {
         </div>
       </div>
     )
-
   }
 
   renderCreatures() {
@@ -515,7 +524,10 @@ class DeckDetail extends Component {
                 </div>
               </div>
             </div>
-
+            <button className="hand_button" onClick={() => this.handleHandClick()}> Get Sample Hand</button>
+            {this.state.handShown &&
+              <SampleHand deck={this.props.deck}/>
+            }
           </div>
         </div>
       );
