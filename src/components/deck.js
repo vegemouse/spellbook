@@ -21,7 +21,7 @@ export default class Deck extends Component {
           backgroundColor: color,
         }
         return (
-          <div className="color" style={colorStyle}></div>
+          <div key={color} className="color" style={colorStyle}></div>
         );
       });
     }

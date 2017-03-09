@@ -11,22 +11,25 @@ class DeckList extends Component {
   }
 
   renderDecks() {
-    return _.map(this.props.decks, (deck, key) => {
-      return (
-        <Link to={"decks/" + key}>
-          <div key={key} className="col-md-4">
-            <Deck deck={deck}/>
+    if (Object.keys(this.props.decks).length > 0) {
+      return _.map(this.props.decks, (deck, key) => {
+        return (
+          <Link key={key} to={"decks/" + key}>
+          <div className="col-md-4">
+          <Deck deck={deck}/>
           </div>
-        </Link>
-      );
-    });
+          </Link>
+        );
+      });
+    } else {
+      return <h3>Loading decks...</h3>
+    }
   }
 
 
   render() {
     return(
       <div className="container">
-      <h2>All Decks</h2>
         <div className="row">
           {this.renderDecks()}
         </div>

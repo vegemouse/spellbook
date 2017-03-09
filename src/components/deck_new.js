@@ -81,7 +81,7 @@ class NewDeck extends Component {
         });
       }
     });
-    
+
     var colors = colorsArray.filter(function(elem, pos) {
       return colorsArray.indexOf(elem) == pos;
     });
@@ -107,7 +107,7 @@ class NewDeck extends Component {
           colors: this.getColors(this.state.mainDeckArray)
         }
         this.props.createDeck(deck).then(() => {
-      this.context.router.push('/');
+      this.context.router.push('/decks');
     });
       } else {
         this.setState({error: true})

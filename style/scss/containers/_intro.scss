@@ -1,0 +1,39 @@
+.intro {
+  background-color: black;
+  background-image: url(../../img/ponder.jpg);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  &_content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    img {
+      margin-bottom: 100px;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+  &_build {
+    @include button($green);
+    text-decoration: none;
+    margin: 10px;
+    height: 40px;
+    width: 120px;
+  }
+  &_all {
+    @include button($magenta);
+    text-decoration: none;
+    margin: 10px;
+    height: 40px;
+    width: 120px;
+  }
+}
