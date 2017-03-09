@@ -1,6 +1,9 @@
 {
-  "name": "redux-simple-starter",
+  "name": "Spellbook",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.9.2"
+  },
   "description": "Simple starter package for Redux with React and Babel support",
   "main": "index.js",
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
@@ -8,7 +11,7 @@
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "postinstall": "webpack -p",
+    "postinstall": "webpack",
     "start": "node server.js"
   },
   "author": "",
