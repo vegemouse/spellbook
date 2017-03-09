@@ -7,11 +7,16 @@
   &_head {
     display: flex;
     justify-content: space-between;
+    background-color: lighten($black, 10%);
+    margin: -10px;
     margin-bottom: 20px;
+    padding: 10px;
+    color: white;
   }
   h3 {
-    color: black;
+    color: $white;
     margin-bottom: 5px;
+    font-weight: normal;
   }
   &_format {
     font-family: "Oswald", sans-serif;

@@ -1615,10 +1615,15 @@ footer {
   .deck_item_head {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px; }
+    background-color: #232323;
+    margin: -10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: white; }
   .deck_item h3, .deck_item .deck_output_header strong, .deck_output_header .deck_item strong {
-    color: black;
-    margin-bottom: 5px; }
+    color: #DAFFED;
+    margin-bottom: 5px;
+    font-weight: normal; }
   .deck_item_format {
     font-family: "Oswald", sans-serif; }
   .deck_item_colors {
