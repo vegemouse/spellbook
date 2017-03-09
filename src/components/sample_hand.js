@@ -19,7 +19,7 @@ export default class SampleHand extends Component {
     var shuffledDeck = shuffle(deck);
 
     return shuffledDeck.slice(0, 7).map((card) => {
-      return <img alt={card.name} key={card.id} src={card.imageUrl} />
+      return <img alt={card.name} key={card.id + Math.floor(Math.random() * 999)} src={card.imageUrl} />
     })
   }
 

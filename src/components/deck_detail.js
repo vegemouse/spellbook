@@ -167,7 +167,7 @@ class DeckDetail extends Component {
         }
 
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
           {cardCount}x {card.name}<br />
           </span>
         );
@@ -211,7 +211,7 @@ class DeckDetail extends Component {
         }
 
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
           {cardCount}x {card.name}<br />
           </span>
         );
@@ -254,7 +254,7 @@ class DeckDetail extends Component {
         }
 
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
           {cardCount}x {card.name}<br />
           </span>
         );
@@ -297,7 +297,7 @@ class DeckDetail extends Component {
         }
 
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
           {cardCount}x {card.name}<br />
           </span>
         );
@@ -340,7 +340,7 @@ class DeckDetail extends Component {
         }
 
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
           {cardCount}x {card.name}<br />
           </span>
         );
@@ -382,7 +382,7 @@ class DeckDetail extends Component {
         }
 
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
           {cardCount}x {card.name}<br />
           </span>
         );
@@ -417,7 +417,7 @@ class DeckDetail extends Component {
             }
           }
           return(
-            <span onClick={() => this.handleCardClick(card)} key={card.key}>
+            <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
             {cardCount}x {card.name}<br />
             </span>
           );

@@ -142,7 +142,7 @@ class NewDeck extends Component {
       if (card.imageUrl) {
         return(
           <div>
-            <span key={card.id}>
+            <span key={card.id + Math.floor(Math.random() * 999)}>
               <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCard(card)}><i className="fa fa-minus" aria-hidden="true"></i></button>
             </span>
           </div>
@@ -163,7 +163,7 @@ class NewDeck extends Component {
         return(
           <div>
             <span key={card.id}>
-              <span onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCardFromSideboard(card)}><i className="fa fa-minus" aria-hidden="true"></i></button>
+              <span key={card.id + Math.floor(Math.random() * 999)} onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCardFromSideboard(card)}><i className="fa fa-minus" aria-hidden="true"></i></button>
             </span>
           </div>
         );
