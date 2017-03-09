@@ -4,9 +4,9 @@
   "engines": {
     "node": "6.10.0"
   },
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "Spellbook is a Magic: The Gathering deckbuilding app built with React/Redux",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+  "repository": "git@github.com:vegemouse/spellbook.git",
   "scripts": {
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",

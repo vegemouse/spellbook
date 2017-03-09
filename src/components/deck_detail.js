@@ -258,6 +258,21 @@ class DeckDetail extends Component {
     }
   }
 
+  renderSideboard() {
+    if (this.props.deck.sideboard) {
+      let cards = this.props.deck.sideboard;
+      if (cards.length > 0) {
+        return cards.map(card => {
+          return (
+            <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
+          )
+        });
+      }
+    } else {
+      return <span>None </span>
+    }
+  }
+
   render() {
     if (this.props.deck) {
       const deck = this.props.deck;
@@ -342,6 +357,12 @@ class DeckDetail extends Component {
                   <div className="deck_detail_well_header">Lands</div>
                   <div className="deck_detail_well_body">
                   {this.renderLands()}
+                  </div>
+                </div><br />
+                <div className="deck_detail_well">
+                  <div className="deck_detail_well_header">Sideboard</div>
+                  <div className="deck_detail_well_body">
+                  {this.renderSideboard()}
                   </div>
                 </div>
               </div>
