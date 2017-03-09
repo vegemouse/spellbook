@@ -1288,7 +1288,8 @@ h5 {
 
 body {
   background-color: #090909;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif; }
 
 a {
   text-decoration: inherit;
@@ -1317,16 +1318,32 @@ header {
   align-items: center;
   margin-bottom: 30px; }
   header .header_buttons_newdeck {
-    display: block; }
-    header .header_buttons_newdeck a:first-of-type {
+    display: block;
+    position: relative;
+    left: 25px; }
+    header .header_buttons_newdeck .build {
       background-color: #558B6E;
       transition: all 200ms ease-out;
       border: 0;
       color: white;
       padding: 10px;
-      text-decoration: none; }
-      header .header_buttons_newdeck a:first-of-type:hover, header .header_buttons_newdeck a:first-of-type:active, header .header_buttons_newdeck a:first-of-type:focus {
+      text-decoration: none;
+      margin-right: 10px; }
+      header .header_buttons_newdeck .build:hover, header .header_buttons_newdeck .build:active, header .header_buttons_newdeck .build:focus {
         background-color: #253c2f;
+        outline: 0;
+        cursor: pointer;
+        transform: scale(1.1); }
+    header .header_buttons_newdeck .all {
+      background-color: #270722;
+      transition: all 200ms ease-out;
+      border: 0;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      margin-right: 10px; }
+      header .header_buttons_newdeck .all:hover, header .header_buttons_newdeck .all:active, header .header_buttons_newdeck .all:focus {
+        background-color: black;
         outline: 0;
         cursor: pointer;
         transform: scale(1.1); }
@@ -1357,7 +1374,10 @@ footer {
     text-align: center;
     padding-top: 15px; }
     footer .footer_content a {
-      color: #a7ffd4; }
+      color: #a7ffd4;
+      transition: color 150ms linear; }
+      footer .footer_content a:hover {
+        color: white; }
     footer .footer_content i {
       font-size: 2em; }
 
@@ -1537,6 +1557,7 @@ footer {
     margin-left: -15px; }
   .deck_bottom textarea {
     width: 380px;
+    padding: 5px;
     height: 138px;
     font-family: "Roboto", sans-serif;
     margin-left: -15px; }
@@ -1619,5 +1640,70 @@ footer {
     background-size: 200%; }
   .deck_item:hover {
     transform: scale(1.05); }
+
+.deck_detail {
+  color: white; }
+  .deck_detail h2 {
+    margin-bottom: 0; }
+  .deck_detail_format {
+    margin-top: 5px;
+    font-weight: bold; }
+  .deck_detail_colors_header {
+    background-color: #558B6E;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    padding: 5px 0; }
+  .deck_detail_colors_body {
+    color: black;
+    padding: 10px;
+    background-color: #DAFFED; }
+  .deck_detail_colors_body {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center; }
+    .deck_detail_colors_body svg {
+      width: 90%; }
+  .deck_detail_cmc_header {
+    background-color: #558B6E;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    padding: 5px 0; }
+  .deck_detail_cmc_body {
+    color: black;
+    padding: 10px;
+    background-color: #DAFFED; }
+  .deck_detail_well_header {
+    background-color: #558B6E;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    padding: 5px 0; }
+  .deck_detail_well_body {
+    color: black;
+    padding: 10px;
+    background-color: #DAFFED; }
+  .deck_detail_well_body span {
+    line-height: 20px;
+    display: block;
+    transition: letter-spacing 100ms ease-in; }
+    .deck_detail_well_body span:hover {
+      letter-spacing: 0.3px;
+      cursor: pointer; }
+  .deck_detail_active_card {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .deck_detail_active_card img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 10px; }
+
+.cmc_inner {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  color: black;
+  align-items: center;
+  font-family: "Oswald", sans-serif; }
 
 /*# sourceMappingURL=application.css.map */

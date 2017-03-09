@@ -9,10 +9,19 @@ header {
   margin-bottom: 30px;
   .header_buttons_newdeck {
     display: block;
-    a:first-of-type {
+    position: relative;
+    left: 25px;
+    .build {
       @include button($green);
       padding: 10px;
       text-decoration: none;
+      margin-right: 10px;
+    }
+    .all {
+      @include button($magenta);
+      padding: 10px;
+      text-decoration: none;
+      margin-right: 10px;
     }
   }
   &:before {

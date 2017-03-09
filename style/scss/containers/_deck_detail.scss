@@ -1,0 +1,58 @@
+.deck_detail {
+  color: white;
+  h2 {
+    margin-bottom: 0;
+  }
+  &_format {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  &_colors {
+    @include well;
+    &_body {
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 90%;
+      }
+    }
+  }
+  &_cmc {
+    @include well;
+  }
+  &_well {
+    @include well;
+    &_body {
+      span {
+        line-height: 20px;
+        display: block;
+        transition: letter-spacing 100ms ease-in;
+        &:hover {
+          letter-spacing: 0.3px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &_active_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.cmc_inner {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  color: black;
+  align-items: center;
+  font-family: "Oswald", sans-serif;
+}

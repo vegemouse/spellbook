@@ -18,6 +18,10 @@ footer {
     padding-top: 15px;
     a {
       color: darken($white, 10%);
+      transition: color 150ms linear;
+      &:hover {
+        color: white;
+      }
     }
     i {
       font-size: 2em;

@@ -4,6 +4,7 @@ import Firebase from 'firebase';
 export const FETCH_CARDS = "FETCH_CARDS";
 export const FETCH_DECKS = "FETCH_DECKS";
 export const SELECT_CARD = "SELECT_CARD";
+export const FETCH_DECK = "FETCH_DECK";
 
 const ROOT_URL = "https://api.magicthegathering.io/v1/cards";
 const Decks = new Firebase('https://spellbook-2cd44.firebaseio.com/');
@@ -38,4 +39,15 @@ export function selectCard(card) {
     type: SELECT_CARD,
     payload: card
   }
+}
+
+export function fetchDeck(id) {
+  return dispatch => {
+    Decks.child('decks').child(id).on('value', snapshot => {
+      dispatch({
+        type: FETCH_DECK,
+        payload: snapshot.val()
+      });
+    });
+  };
 }

@@ -10,3 +10,17 @@
     transform: scale(1.1);
   }
 }
+
+@mixin well {
+  &_header {
+    background-color: $green;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    padding: 5px 0;
+  }
+  &_body {
+    color: black;
+    padding: 10px;
+    background-color: $white;
+  }
+}
