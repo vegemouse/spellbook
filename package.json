@@ -2,7 +2,7 @@
   "name": "Spellbook",
   "version": "1.0.0",
   "engines": {
-    "node": "6.9.2"
+    "node": "6.10.0"
   },
   "description": "Simple starter package for Redux with React and Babel support",
   "main": "index.js",
