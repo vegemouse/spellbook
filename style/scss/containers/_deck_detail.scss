@@ -28,7 +28,6 @@
     &_body {
       span {
         line-height: 20px;
-        display: block;
         transition: letter-spacing 100ms ease-in;
         &:hover {
           letter-spacing: 0.3px;

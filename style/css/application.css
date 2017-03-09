@@ -1688,7 +1688,6 @@ footer {
     background-color: #DAFFED; }
   .deck_detail_well_body span {
     line-height: 20px;
-    display: block;
     transition: letter-spacing 100ms ease-in; }
     .deck_detail_well_body span:hover {
       letter-spacing: 0.3px;

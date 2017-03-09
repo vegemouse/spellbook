@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchDecks, fetchDeck } from '../actions/index';
 import { Link } from 'react-router';
 import PieChart from 'react-simple-pie-chart';
+import _ from 'lodash';
 
 class DeckDetail extends Component {
   constructor(props) {
@@ -135,11 +136,31 @@ class DeckDetail extends Component {
         creaturesArray.push(card);
       }
     })
+    // Remove duplicates from Array
+    var uniqueArray = _.map(
+      _.uniq(
+          _.map(creaturesArray, function(obj){
+              return JSON.stringify(obj);
+          })
+      ), function(obj) {
+          return JSON.parse(obj);
+      }
+    );
+    // Count amount in Array...
+    if (uniqueArray.length > 0) {
+      return uniqueArray.map((card) => {
+        var cardCount = 0;
 
-    if (creaturesArray.length > 0) {
-      return creaturesArray.map((card) => {
+        for (var i = 0; i < creaturesArray.length; i++) {
+          if(card.id == creaturesArray[i].id) {
+            cardCount++;
+          }
+        }
+
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
+          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          {cardCount}x {card.name}<br />
+          </span>
         );
       })
     } else {
@@ -158,10 +179,32 @@ class DeckDetail extends Component {
       }
     })
 
-    if (landsArray.length > 0) {
-      return landsArray.map((card) => {
+    // Remove duplicates from Array
+    var uniqueArray = _.map(
+      _.uniq(
+          _.map(landsArray, function(obj){
+              return JSON.stringify(obj);
+          })
+      ), function(obj) {
+          return JSON.parse(obj);
+      }
+    );
+
+
+    if (uniqueArray.length > 0) {
+      return uniqueArray.map((card) => {
+        var cardCount = 0;
+
+        for (var i = 0; i < landsArray.length; i++) {
+          if(card.id == landsArray[i].id) {
+            cardCount++;
+          }
+        }
+
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
+          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          {cardCount}x {card.name}<br />
+          </span>
         );
       })
     } else {
@@ -180,13 +223,34 @@ class DeckDetail extends Component {
       }
     })
 
-    if (instantsArray.length > 0) {
-      return instantsArray.map((card) => {
+    // Remove duplicates from Array
+    var uniqueArray = _.map(
+      _.uniq(
+          _.map(instantsArray, function(obj){
+              return JSON.stringify(obj);
+          })
+      ), function(obj) {
+          return JSON.parse(obj);
+      }
+    );
+
+    if (uniqueArray.length > 0) {
+      return uniqueArray.map((card) => {
+        var cardCount = 0;
+
+        for (var i = 0; i < instantsArray.length; i++) {
+          if(card.id == instantsArray[i].id) {
+            cardCount++;
+          }
+        }
+
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
+          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          {cardCount}x {card.name}<br />
+          </span>
         );
       })
-    }else {
+    } else {
       return (
         <span> None </span>
       )
@@ -201,10 +265,32 @@ class DeckDetail extends Component {
         enchanmentsArray.push(card);
       }
     })
-    if (enchanmentsArray.length > 0) {
-      return enchanmentsArray.map((card) => {
+
+    // Remove duplicates from Array
+    var uniqueArray = _.map(
+      _.uniq(
+          _.map(enchanmentsArray, function(obj){
+              return JSON.stringify(obj);
+          })
+      ), function(obj) {
+          return JSON.parse(obj);
+      }
+    );
+
+    if (uniqueArray.length > 0) {
+      return uniqueArray.map((card) => {
+        var cardCount = 0;
+
+        for (var i = 0; i < enchanmentsArray.length; i++) {
+          if(card.id == enchanmentsArray[i].id) {
+            cardCount++;
+          }
+        }
+
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
+          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          {cardCount}x {card.name}<br />
+          </span>
         );
       })
     } else {
@@ -221,12 +307,33 @@ class DeckDetail extends Component {
       if (card.types[0] === "Artifact" && card.types[1] !== "Creature") {
         artifactsArray.push(card);
       }
-    })
+    });
 
-    if (artifactsArray.length > 0) {
-      return artifactsArray.map((card) => {
+    // Remove duplicates from Array
+    var uniqueArray = _.map(
+      _.uniq(
+          _.map(artifactsArray, function(obj){
+              return JSON.stringify(obj);
+          })
+      ), function(obj) {
+          return JSON.parse(obj);
+      }
+    );
+
+    if (uniqueArray.length > 0) {
+      return uniqueArray.map((card) => {
+        var cardCount = 0;
+
+        for (var i = 0; i < artifactsArray.length; i++) {
+          if(card.id == artifactsArray[i].id) {
+            cardCount++;
+          }
+        }
+
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
+          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          {cardCount}x {card.name}<br />
+          </span>
         );
       })
     } else {
@@ -245,10 +352,30 @@ class DeckDetail extends Component {
       }
     })
 
-    if (planeswalkersArray.length > 0) {
-      return planeswalkersArray.map((card) => {
+    var uniqueArray = _.map(
+      _.uniq(
+          _.map(planeswalkersArray, function(obj){
+              return JSON.stringify(obj);
+          })
+      ), function(obj) {
+          return JSON.parse(obj);
+      }
+    );
+
+    if (uniqueArray.length > 0) {
+      return uniqueArray.map((card) => {
+        var cardCount = 0;
+
+        for (var i = 0; i < planeswalkersArray.length; i++) {
+          if(card.id == planeswalkersArray[i].id) {
+            cardCount++;
+          }
+        }
+
         return(
-          <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
+          <span onClick={() => this.handleCardClick(card)} key={card.key}>
+          {cardCount}x {card.name}<br />
+          </span>
         );
       })
     } else {
@@ -261,13 +388,34 @@ class DeckDetail extends Component {
   renderSideboard() {
     if (this.props.deck.sideboard) {
       let cards = this.props.deck.sideboard;
-      if (cards.length > 0) {
-        return cards.map(card => {
-          return (
-            <span onClick={() => this.handleCardClick(card)} key={card.key}>{card.name}</span>
-          )
-        });
+      // Remove duplicates from Array
+      var uniqueArray = _.map(
+        _.uniq(
+            _.map(cards, function(obj){
+                return JSON.stringify(obj);
+            })
+        ), function(obj) {
+            return JSON.parse(obj);
+        }
+      );
+      if (uniqueArray.length > 0) {
+        return uniqueArray.map((card) => {
+          var cardCount = 0;
+
+          for (var i = 0; i < cards.length; i++) {
+            if(card.id == cards[i].id) {
+              cardCount++;
+            }
+          }
+          return(
+            <span onClick={() => this.handleCardClick(card)} key={card.key}>
+            {cardCount}x {card.name}<br />
+            </span>
+          );
+        })
       }
+
+
     } else {
       return <span>None </span>
     }
