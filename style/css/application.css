@@ -1424,12 +1424,9 @@ footer {
 
 .deck_inputs {
   background-color: #558B6E;
-  height: 54px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  margin: 20px 0px 20px 0px; }
+  margin: 20px 0px; }
   .deck_inputs:before {
     content: "";
     position: absolute;
@@ -1442,6 +1439,15 @@ footer {
     margin-right: 50px; }
   .deck_inputs input, .deck_inputs select {
     margin: 0 10px; }
+  @media screen and (max-width: 780px) {
+    .deck_inputs {
+      background-color: inherit;
+      display: block;
+      padding: 10px; }
+      .deck_inputs input, .deck_inputs select {
+        margin: 10px; }
+      .deck_inputs:before {
+        display: none; } }
 
 .card_search {
   background-color: #495867;
@@ -1591,7 +1597,12 @@ footer {
 .deck_bottom {
   margin: 30px -15px;
   display: flex;
-  align-items: flex-end; }
+  align-items: flex-end;
+  justify-content: space-between; }
+  @media screen and (max-width: 750px) {
+    .deck_bottom {
+      flex-direction: column;
+      margin: 0; } }
   .deck_bottom label {
     display: block;
     margin-bottom: 10px;

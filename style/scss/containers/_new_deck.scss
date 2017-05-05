@@ -1,12 +1,9 @@
 .deck {
   &_inputs {
     background-color: $green;
-    height: 54px;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0px;
     &:before {
       content: "";
       position: absolute;
@@ -23,6 +20,18 @@
 
     input, select {
       margin: 0 10px;
+    }
+
+    @media screen and (max-width: 780px) {
+      background-color: inherit;
+      display: block;
+      padding: 10px;
+      input, select {
+        margin: 10px;
+      }
+      &:before {
+        display: none;
+      }
     }
   }
 }
@@ -193,6 +202,11 @@
   margin: 30px -15px;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+    margin: 0;
+  }
   label {
     display: block;
     margin-bottom: 10px;
