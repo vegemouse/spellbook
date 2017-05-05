@@ -1350,6 +1350,9 @@ header {
         outline: 0;
         cursor: pointer;
         transform: scale(1.1); }
+    @media screen and (max-width: 500px) {
+      header .header_buttons_newdeck {
+        display: none; } }
   header:before {
     content: "";
     position: absolute;
@@ -1358,6 +1361,41 @@ header {
     width: 100vw;
     height: 95px;
     z-index: -10; }
+
+.header_buttons_newdeck_small {
+  display: none; }
+  @media screen and (max-width: 501px) {
+    .header_buttons_newdeck_small {
+      display: block;
+      position: relative;
+      left: 25px;
+      margin-right: 25px; }
+      .header_buttons_newdeck_small .build {
+        background-color: #558B6E;
+        transition: all 200ms ease-out;
+        border: 0;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        margin-right: 10px; }
+        .header_buttons_newdeck_small .build:hover, .header_buttons_newdeck_small .build:active, .header_buttons_newdeck_small .build:focus {
+          background-color: #253c2f;
+          outline: 0;
+          cursor: pointer;
+          transform: scale(1.1); }
+      .header_buttons_newdeck_small .all {
+        background-color: #270722;
+        transition: all 200ms ease-out;
+        border: 0;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        margin-right: 10px; }
+        .header_buttons_newdeck_small .all:hover, .header_buttons_newdeck_small .all:active, .header_buttons_newdeck_small .all:focus {
+          background-color: black;
+          outline: 0;
+          cursor: pointer;
+          transform: scale(1.1); } }
 
 footer {
   background-color: #495867;

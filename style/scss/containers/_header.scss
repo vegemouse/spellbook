@@ -1,3 +1,21 @@
+@mixin buttonsDiv() {
+  display: block;
+  position: relative;
+  left: 25px;
+  .build {
+    @include button($green);
+    padding: 10px;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  .all {
+    @include button($magenta);
+    padding: 10px;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+}
+
 header {
   background-color: $blue;
   height: 95px;
@@ -8,20 +26,9 @@ header {
   align-items: center;
   margin-bottom: 30px;
   .header_buttons_newdeck {
-    display: block;
-    position: relative;
-    left: 25px;
-    .build {
-      @include button($green);
-      padding: 10px;
-      text-decoration: none;
-      margin-right: 10px;
-    }
-    .all {
-      @include button($magenta);
-      padding: 10px;
-      text-decoration: none;
-      margin-right: 10px;
+    @include buttonsDiv();
+    @media screen and (max-width: 500px) {
+      display: none;
     }
   }
   &:before {
@@ -32,5 +39,13 @@ header {
     width: 100vw;
     height: 95px;
     z-index: -10;
+  }
+}
+
+.header_buttons_newdeck_small {
+  display: none;
+  @media screen and (max-width: 501px) {
+    @include buttonsDiv();
+    margin-right: 25px;
   }
 }
