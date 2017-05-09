@@ -2,18 +2,24 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchDecks, fetchDeck } from '../actions/index';
 import { Link } from 'react-router';
-import PieChart from 'react-simple-pie-chart';
 import _ from 'lodash';
 import SampleHand from './sample_hand';
+import ColorChart from './color_chart';
+import CmcChart from './cmc_chart';
+import AnimateOnChange from 'react-animate-on-change';
 
 class DeckDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeCard: null,
+      activeCard: {
+        imageUrl: './../../img/mtg-back.jpg',
+        name: 'Select a card'
+      },
       handShown: false
     }
   }
+
   static contextTypes = {
     router: PropTypes.object
   };
@@ -26,319 +32,40 @@ class DeckDetail extends Component {
     this.setState({activeCard: card});
   }
 
-  handleHandClick() {
-    if (!this.state.handShown) {
-      this.setState({handShown: true});
+  renderCards(cardType) {
+    let cardArray = [];
+    if (cardType === "Sideboard") {
+      cardArray = this.props.deck.sideboard;
     } else {
-      this.setState({handShown: false})
-    }
-  }
-
-  renderColors() {
-    let cards = this.props.deck.cards;
-    let red = 0;
-    let blue = 0;
-    let green = 0;
-    let white = 0;
-    let black = 0;
-
-    cards.map((card, key) => {
-      if (card.colorIdentity) {
-        card.colorIdentity.map((color => {
-          if (color === "R") {
-            red++;
-          } else if (color === "U") {
-            blue++;
-          } else if (color === "G") {
-            green++;
-          } else if (color === "W") {
-            white++;
-          } else if (color === "B") {
-            black++;
+      let cards = this.props.deck.cards;
+      cards.map(card => {
+        if (cardType === "Instant") {
+          if (card.types[0] === "Instant" || card.types[0] === "Sorcery") {
+            cardArray.push(card);
           }
-        }));
-      }
-    });
-
-    return (
-      <PieChart
-      slices={[
-        {
-          color: '#b25252',
-          value: red,
-        },
-        {
-          color: '#79af7d',
-          value: green,
-        },
-        {
-          color: '#587dbc',
-          value: blue,
-        },
-        {
-          color: '#f4f4e3',
-          value: white,
-        },
-        {
-          color: '#010b1c',
-          value: black,
-        },
-      ]}
-      />
-    )
-  }
-
-  renderCmc() {
-    let cards = this.props.deck.cards;
-    let zero = 0;
-    let one = 0;
-    let two = 0;
-    let three = 0;
-    let four = 0;
-    let five = 0;
-    let six = 0;
-    let moreThanSix = 0;
-
-    cards.map((card, key) => {
-      if (card.cmc === 0) {
-        zero++;
-      } else if (card.cmc === 1) {
-        one++;
-      } else if (card.cmc === 2) {
-        two++;
-      } else if (card.cmc === 3) {
-        three++;
-      } else if (card.cmc === 4) {
-        four++;
-      } else if (card.cmc === 5) {
-        five++;
-      } else if (card.cmc === 6) {
-        six++;
-      } else if (card.cmc > 6) {
-        moreThanSix++;
-      }
-    });
-
-    return (
-      <div className="cmc_inner">
-        <div className="cmc_inner_left">
-          <strong>0:</strong> {zero} cards<br />
-          <strong>1:</strong> {one} cards<br />
-          <strong>2:</strong> {two} cards<br />
-          <strong>3:</strong> {three} cards<br />
-        </div>
-        <div className="cmc_inner_right">
-          <strong>4:</strong> {four} cards<br />
-          <strong>5:</strong> {five} cards<br />
-          <strong>6:</strong> {six} cards<br />
-          <strong>>:</strong> {moreThanSix} cards<br />
-        </div>
-      </div>
-    )
-  }
-
-  renderCreatures() {
-    let cards = this.props.deck.cards;
-    let creaturesArray = [];
-    cards.map(card => {
-      if (card.types[0] === "Creature" || card.types[1] === "Creature") {
-        creaturesArray.push(card);
-      }
-    })
-    // Remove duplicates from Array
-    var uniqueArray = _.map(
-      _.uniq(
-          _.map(creaturesArray, function(obj){
-              return JSON.stringify(obj);
-          })
-      ), function(obj) {
-          return JSON.parse(obj);
-      }
-    );
-    // Count amount in Array...
-    if (uniqueArray.length > 0) {
-      return uniqueArray.map((card) => {
-        var cardCount = 0;
-
-        for (var i = 0; i < creaturesArray.length; i++) {
-          if(card.id == creaturesArray[i].id) {
-            cardCount++;
-          }
+        } else if (card.types[0] === cardType) {
+          cardArray.push(card);
         }
-
-        return(
-          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
-          {cardCount}x {card.name} ({card.set})<br />
-          </span>
-        );
       })
-    } else {
-      return (
-        <span> None </span>
-      )
     }
-  }
-
-  renderLands() {
-    let cards = this.props.deck.cards;
-    let landsArray = [];
-    cards.map(card => {
-      if (card.types[0] === "Land") {
-        landsArray.push(card);
-      }
-    })
-
-    // Remove duplicates from Array
     var uniqueArray = _.map(
       _.uniq(
-          _.map(landsArray, function(obj){
+          _.map(cardArray, function(obj){
               return JSON.stringify(obj);
           })
       ), function(obj) {
           return JSON.parse(obj);
       }
     );
-
-
     if (uniqueArray.length > 0) {
       return uniqueArray.map((card) => {
         var cardCount = 0;
 
-        for (var i = 0; i < landsArray.length; i++) {
-          if(card.id == landsArray[i].id) {
+        for (var i = 0; i < cardArray.length; i++) {
+          if(card.id == cardArray[i].id) {
             cardCount++;
           }
         }
-
-        return(
-          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
-          {cardCount}x {card.name} <small>({card.set})</small><br />
-          </span>
-        );
-      })
-    } else {
-      return (
-        <span> None </span>
-      )
-    }
-  }
-
-  renderInstants() {
-    let cards = this.props.deck.cards;
-    let instantsArray = [];
-    cards.map(card => {
-      if (card.types[0] === "Sorcery" || card.types[0] === "Instant" ) {
-        instantsArray.push(card);
-      }
-    })
-
-    // Remove duplicates from Array
-    var uniqueArray = _.map(
-      _.uniq(
-          _.map(instantsArray, function(obj){
-              return JSON.stringify(obj);
-          })
-      ), function(obj) {
-          return JSON.parse(obj);
-      }
-    );
-
-    if (uniqueArray.length > 0) {
-      return uniqueArray.map((card) => {
-        var cardCount = 0;
-
-        for (var i = 0; i < instantsArray.length; i++) {
-          if(card.id == instantsArray[i].id) {
-            cardCount++;
-          }
-        }
-
-        return(
-          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
-          {cardCount}x {card.name} <small>({card.set})</small><br />
-          </span>
-        );
-      })
-    } else {
-      return (
-        <span> None </span>
-      )
-    }
-  }
-
-  renderEnchantments() {
-    let cards = this.props.deck.cards;
-    let enchanmentsArray = [];
-    cards.map(card => {
-      if (card.types[0] === "Enchantment" && card.types[1] !== "Creature") {
-        enchanmentsArray.push(card);
-      }
-    })
-
-    // Remove duplicates from Array
-    var uniqueArray = _.map(
-      _.uniq(
-          _.map(enchanmentsArray, function(obj){
-              return JSON.stringify(obj);
-          })
-      ), function(obj) {
-          return JSON.parse(obj);
-      }
-    );
-
-    if (uniqueArray.length > 0) {
-      return uniqueArray.map((card) => {
-        var cardCount = 0;
-
-        for (var i = 0; i < enchanmentsArray.length; i++) {
-          if(card.id == enchanmentsArray[i].id) {
-            cardCount++;
-          }
-        }
-
-        return(
-          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
-          {cardCount}x {card.name} <small>({card.set})</small><br />
-          </span>
-        );
-      })
-    } else {
-      return (
-        <span> None </span>
-      )
-    }
-  }
-
-  renderArtifacts() {
-    let cards = this.props.deck.cards;
-    let artifactsArray = [];
-    cards.map(card => {
-      if (card.types[0] === "Artifact" && card.types[1] !== "Creature") {
-        artifactsArray.push(card);
-      }
-    });
-
-    // Remove duplicates from Array
-    var uniqueArray = _.map(
-      _.uniq(
-          _.map(artifactsArray, function(obj){
-              return JSON.stringify(obj);
-          })
-      ), function(obj) {
-          return JSON.parse(obj);
-      }
-    );
-
-    if (uniqueArray.length > 0) {
-      return uniqueArray.map((card) => {
-        var cardCount = 0;
-
-        for (var i = 0; i < artifactsArray.length; i++) {
-          if(card.id == artifactsArray[i].id) {
-            cardCount++;
-          }
-        }
-
         return(
           <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
           {cardCount}x {card.name} <small>({card.set})</small><br />
@@ -352,183 +79,114 @@ class DeckDetail extends Component {
     }
   }
 
-  renderPlaneswalkers() {
-    let cards = this.props.deck.cards;
-    let planeswalkersArray = [];
-    cards.map(card => {
-      if (card.types[0] === "Planeswalker") {
-        planeswalkersArray.push(card);
-      }
-    })
-
-    var uniqueArray = _.map(
-      _.uniq(
-          _.map(planeswalkersArray, function(obj){
-              return JSON.stringify(obj);
-          })
-      ), function(obj) {
-          return JSON.parse(obj);
-      }
-    );
-
-    if (uniqueArray.length > 0) {
-      return uniqueArray.map((card) => {
-        var cardCount = 0;
-
-        for (var i = 0; i < planeswalkersArray.length; i++) {
-          if(card.id == planeswalkersArray[i].id) {
-            cardCount++;
-          }
-        }
-
-        return(
-          <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
-          {cardCount}x {card.name} <small>({card.set})</small><br />
-          </span>
-        );
-      })
-    } else {
-      return (
-        <span> None </span>
-      );
-    }
-  }
-
-  renderSideboard() {
-    if (this.props.deck.sideboard) {
-      let cards = this.props.deck.sideboard;
-      // Remove duplicates from Array
-      var uniqueArray = _.map(
-        _.uniq(
-            _.map(cards, function(obj){
-                return JSON.stringify(obj);
-            })
-        ), function(obj) {
-            return JSON.parse(obj);
-        }
-      );
-      if (uniqueArray.length > 0) {
-        return uniqueArray.map((card) => {
-          var cardCount = 0;
-
-          for (var i = 0; i < cards.length; i++) {
-            if(card.id == cards[i].id) {
-              cardCount++;
-            }
-          }
-          return(
-            <span onClick={() => this.handleCardClick(card)} key={card.id + Math.floor(Math.random() * 999)}>
-            {cardCount}x {card.name} <small>({card.set})</small><br />
-            </span>
-          );
-        })
-      }
-
-
-    } else {
-      return <span>None </span>
-    }
-  }
 
   render() {
     if (this.props.deck) {
       const deck = this.props.deck;
       return (
         <div className="container deck_detail">
+
           <div className="row">
             <h2>{deck.name}</h2>
             <span className="deck_detail_format">{deck.format} deck</span>
             <br />
             <p className="deck_detail_description">{deck.description}</p>
+          </div>
 
-            <div className="row">
-              <div className="col-sm-3">
+          <div className="row">
 
-                  {this.state.activeCard &&
-                    <div className="deck_detail_active_card">
-                      <img src={this.state.activeCard.imageUrl} alt={this.state.activeCard.name} />
-                    </div>
-                  }
+            <div className="col-sm-3">
+              <div className="deck_detail_active_card">
 
-                <div className="deck_detail_colors">
-                  <div className="deck_detail_colors_header">
-                    Colors
-                  </div>
-                  <div className="deck_detail_colors_body">
-                  {this.renderColors()}
-                  </div>
-                </div>
-                <br />
+                <AnimateOnChange
+                  baseClassName="active-card"
+                  animationClassName="active-card-animate"
+                  animate={true}>
 
-                <div className="deck_detail_cmc">
-                  <div className="deck_detail_cmc_header">
-                    Converted Mana Cost
-                  </div>
-                  <div className="deck_detail_cmc_body">
-                  {this.renderCmc()}
-                  </div>
-                </div>
-                <br />
+                  <img src={this.state.activeCard.imageUrl} alt={this.state.activeCard.name} />
+
+                </AnimateOnChange>
+
               </div>
 
-              <div className="col-sm-3">
-                <div className="deck_detail_well">
-                  <div className="deck_detail_well_header">Creatures</div>
-                  <div className="deck_detail_well_body">
-                  {this.renderCreatures()}
-                  </div>
+              <div className="deck_detail_colors">
+                <div className="deck_detail_colors_header">
+                  Colors
                 </div>
-                <br />
-                <div className="deck_detail_well">
-                  <div className="deck_detail_well_header">Instants/Sorceries</div>
-                  <div className="deck_detail_well_body">
-                  {this.renderInstants()}
-                  </div>
-                </div>
-                <br />
-              </div>
-              <div className="col-sm-3">
-                <div className="deck_detail_well">
-                  <div className="deck_detail_well_header">Enchantments</div>
-                  <div className="deck_detail_well_body">
-                  {this.renderEnchantments()}
-                  </div>
-                </div>
-                <br />
-                <div className="deck_detail_well">
-                  <div className="deck_detail_well_header">Artifacts</div>
-                  <div className="deck_detail_well_body">
-                  {this.renderArtifacts()}
-                  </div>
-                </div>
-                <br />
-                <div className="deck_detail_well">
-                  <div className="deck_detail_well_header">Planeswalkers</div>
-                  <div className="deck_detail_well_body">
-                  {this.renderPlaneswalkers()}
-                  </div>
+                <div className="deck_detail_colors_body">
+                  <ColorChart deck={deck} />
                 </div>
               </div>
-              <div className="col-sm-3">
-                <div className="deck_detail_well">
-                  <div className="deck_detail_well_header">Lands</div>
-                  <div className="deck_detail_well_body">
-                  {this.renderLands()}
-                  </div>
-                </div><br />
-                <div className="deck_detail_well">
-                  <div className="deck_detail_well_header">Sideboard</div>
-                  <div className="deck_detail_well_body">
-                  {this.renderSideboard()}
-                  </div>
+
+              <div className="deck_detail_cmc">
+                <div className="deck_detail_cmc_header">
+                  Converted Mana Cost
+                </div>
+                <div className="deck_detail_cmc_body">
+                  <CmcChart deck={deck} />
                 </div>
               </div>
             </div>
-            <button className="hand_button" onClick={() => this.handleHandClick()}> Show Sample Hand</button>
-            {this.state.handShown &&
-              <SampleHand deck={this.props.deck}/>
-            }
+
+
+            <div className="col-sm-3">
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Creatures</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Creature")}
+                </div>
+              </div>
+
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Instants/Sorceries</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Instant")}
+                </div>
+              </div>
+            </div>
+
+            <div className="col-sm-3">
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Enchantments</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Enchantment")}
+                </div>
+              </div>
+
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Artifacts</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Artifact")}
+                </div>
+              </div>
+
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Planeswalkers</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Planeswalker")}
+                </div>
+              </div>
+            </div>
+
+            <div className="col-sm-3">
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Lands</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Land")}
+                </div>
+              </div>
+
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Sideboard</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Sideboard")}
+                </div>
+              </div>
+            </div>
           </div>
+          <br />
+          <SampleHand deck={this.props.deck}/>
+
         </div>
       );
     } else {

@@ -9,6 +9,7 @@
   }
   &_colors {
     @include well;
+    margin-bottom: 10px;
     &_body {
       display: flex;
       padding: 10px;
@@ -21,9 +22,11 @@
   }
   &_cmc {
     @include well;
+    margin-bottom: 10px;
   }
   &_well {
     @include well;
+    margin-bottom: 10px;
     &_body {
       span {
         line-height: 20px;
@@ -59,6 +62,7 @@
 }
 
 .sample_hand {
+  height: 300px;
   width: 100%;
   img {
     width: 14.28%;
@@ -70,4 +74,9 @@
   @include button($green);
   margin: 20px 0;
   padding: 10px;
+}
+
+
+.active-card-animate {
+  animation: fadeIn 0.25s;
 }
