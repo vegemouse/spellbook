@@ -1493,7 +1493,7 @@ footer {
 .selected_card {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  padding: 0 10px; }
+  padding: 10px; }
   .selected_card_image {
     display: flex;
     justify-content: center;
@@ -1591,30 +1591,23 @@ footer {
   color: red; }
 
 .deck_bottom {
-  margin: 30px -15px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between; }
-  @media screen and (max-width: 750px) {
-    .deck_bottom {
-      flex-direction: column;
-      margin: 0; } }
+  margin: 30px -15px; }
   .deck_bottom label {
     display: block;
-    margin-bottom: 10px;
-    margin-left: -15px; }
+    margin-bottom: 10px; }
   .deck_bottom textarea {
-    width: 380px;
+    width: 100%;
     padding: 5px;
     height: 138px;
     font-family: "Roboto", sans-serif;
-    margin-left: -15px; }
+    border: 2px solid #495867; }
   .deck_bottom .deck_bottom_buttons {
+    background-color: #DAFFED;
+    padding: 20px;
+    margin: 0 -15px;
+    margin-top: 30px;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-    margin-right: -15px; }
+    justify-content: center; }
   .deck_bottom .cancel_button {
     background-color: #270722;
     transition: all 200ms ease-out;
@@ -1717,61 +1710,67 @@ footer {
     transform: scale(1.05); }
 
 .deck_detail {
-  color: white;
   margin-bottom: 20px; }
   .deck_detail h2 {
     margin-bottom: 0; }
   .deck_detail_format {
     margin-top: 5px;
     font-weight: bold; }
-  .deck_detail_colors_header {
-    background-color: #558B6E;
-    text-align: center;
-    font-family: "Oswald", sans-serif;
-    padding: 5px 0; }
-  .deck_detail_colors_body {
-    color: black;
-    padding: 10px;
-    background-color: #DAFFED; }
-  .deck_detail_colors_body {
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center; }
-    .deck_detail_colors_body svg {
-      width: 90%; }
-  .deck_detail_cmc_header {
-    background-color: #558B6E;
-    text-align: center;
-    font-family: "Oswald", sans-serif;
-    padding: 5px 0; }
-  .deck_detail_cmc_body {
-    color: black;
-    padding: 10px;
-    background-color: #DAFFED; }
-  .deck_detail_well_header {
-    background-color: #558B6E;
-    text-align: center;
-    font-family: "Oswald", sans-serif;
-    padding: 5px 0; }
-  .deck_detail_well_body {
-    color: black;
-    padding: 10px;
-    background-color: #DAFFED; }
-  .deck_detail_well_body span {
-    line-height: 20px;
-    transition: letter-spacing 100ms ease-in; }
-    .deck_detail_well_body span:hover {
-      letter-spacing: 0.3px;
-      cursor: pointer; }
+  .deck_detail_colors {
+    border: 2px solid #495867; }
+    .deck_detail_colors_header {
+      border-bottom: 2px solid #495867;
+      background-color: #DAFFED;
+      text-align: center;
+      font-family: "Oswald", sans-serif;
+      padding: 10px 0; }
+    .deck_detail_colors_body {
+      color: black;
+      padding: 10px; }
+    .deck_detail_colors_body {
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+      align-items: center; }
+      .deck_detail_colors_body svg {
+        width: 90%; }
+  .deck_detail_cmc {
+    border: 2px solid #495867; }
+    .deck_detail_cmc_header {
+      border-bottom: 2px solid #495867;
+      background-color: #DAFFED;
+      text-align: center;
+      font-family: "Oswald", sans-serif;
+      padding: 10px 0; }
+    .deck_detail_cmc_body {
+      color: black;
+      padding: 10px; }
+  .deck_detail_well {
+    border: 2px solid #495867; }
+    .deck_detail_well_header {
+      border-bottom: 2px solid #495867;
+      background-color: #DAFFED;
+      text-align: center;
+      font-family: "Oswald", sans-serif;
+      padding: 10px 0; }
+    .deck_detail_well_body {
+      color: black;
+      padding: 10px; }
+    .deck_detail_well_body span {
+      line-height: 20px;
+      transition: letter-spacing 100ms ease-in; }
+      .deck_detail_well_body span:hover {
+        letter-spacing: 0.3px;
+        cursor: pointer; }
   .deck_detail_active_card {
     display: flex;
     justify-content: center;
     align-items: center; }
     .deck_detail_active_card img {
       width: 100%;
-      border-radius: 20px;
       margin-bottom: 10px; }
+  .deck_detail p {
+    padding: 20px 0; }
 
 .cmc_inner {
   display: flex;
@@ -1782,7 +1781,8 @@ footer {
   font-family: "Oswald", sans-serif; }
 
 .sample_hand {
-  width: 100%; }
+  width: 100%;
+  margin-top: 20px; }
   .sample_hand img {
     width: 14.28%;
     align-items: baseline; }

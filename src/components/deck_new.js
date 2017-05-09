@@ -199,7 +199,10 @@ class NewDeck extends Component {
 
           <CardSearch />
 
-          <div className="col-sm-3 selected_card">
+          <div className="col-sm-4 selected_card">
+            {!this.props.selectedCard &&
+              <h5>To begin, please search for a card.</h5>
+            }
             {this.props.selectedCard &&
               <div>
                 <div className="selected_card_image"><img src={this.props.selectedCard.imageUrl} alt={this.props.selectedCard.name} /></div>
@@ -231,14 +234,12 @@ class NewDeck extends Component {
           </div>
         </div>
 
-        <div className="deck_bottom row">
-          <div className="col-sm-6"><label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} /></div>
+        <div className="deck_bottom">
+          <label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} />
 
-          <div className="col-sm-6">
-            <div className="deck_bottom_buttons">
-              <span className="save_button" onClick={this.saveDeck()}>Save Deck</span>
-              <Link to="/" className="cancel_button">Cancel</Link>
-            </div>
+          <div className="deck_bottom_buttons">
+            <span className="save_button" onClick={this.saveDeck()}>Save Deck</span>
+            <Link to="/" className="cancel_button">Cancel</Link>
           </div>
         </div>
       </div>

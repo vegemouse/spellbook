@@ -12,15 +12,16 @@
 }
 
 @mixin well {
+  border: 2px solid $blue;
   &_header {
-    background-color: $green;
+    border-bottom: 2px solid $blue;
+    background-color: $white;
     text-align: center;
     font-family: "Oswald", sans-serif;
-    padding: 5px 0;
+    padding: 10px 0;
   }
   &_body {
     color: black;
     padding: 10px;
-    background-color: $white;
   }
 }
