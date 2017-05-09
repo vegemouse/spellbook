@@ -1,16 +1,17 @@
 .deck {
   &_inputs {
-    background-color: $green;
     display: flex;
     align-items: center;
-    margin: 20px 0px;
+    margin: 30px 0px 50px 0;
     &:before {
       content: "";
       position: absolute;
       left: 0;
-      background-color: $green;
+      background-color: lighten($blue, 50%);
       width: 100vw;
       height: 54px;
+      border: solid $blue;
+      border-width: 2px 0;
       z-index: -10;
     }
 
@@ -20,6 +21,7 @@
 
     input, select {
       margin: 0 10px;
+      border: 1px solid $blue;
     }
 
     @media screen and (max-width: 780px) {
@@ -38,7 +40,8 @@
 
 
 .card_search {
-  background-color: $blue;
+  background-color: lighten($blue, 50%);
+  border: 2px solid $blue;
   height: 470px;
   &_input {
     display: flex;
@@ -47,12 +50,12 @@
     input {
       width: 90%;
       height: 30px;
-      border-radius: 50px 0 0 50px;
+      outline: 0;
+      border: 0;
     }
     button {
       width: 10%;
       height: 30px;
-      border-radius: 0px 50px 50px 0;
       border: 0;
       color: $white;
       @include button($green);
@@ -74,14 +77,12 @@
       &:hover {
         background-color: $white;
         cursor: pointer;
-        transform: scale(1.02);
       }
     }
   }
 }
 
 .selected_card {
-  color: white;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   padding: 0 10px;
@@ -91,13 +92,13 @@
     width: 100%;
   }
   img {
-    outline: 10px solid $black;
     outline-offset: -10px;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
   &_details {
+    padding: 15px 5px;
     &_head {
       strong {
         font-size: 16px;
@@ -140,9 +141,9 @@
 }
 
 .deck_output {
-  color: white;
   padding-top: 15px;
-  background-color: $green;
+  background-color: lighten($blue, 50%);
+  border: 2px solid $blue;
   height: 470px;
   &_header {
     display: flex;
@@ -171,7 +172,6 @@
       &:hover {
         background-color: $white;
         cursor: pointer;
-        transform: scale(1.05);
       }
     }
     span {

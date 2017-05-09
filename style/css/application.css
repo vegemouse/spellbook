@@ -1260,34 +1260,29 @@ h1, h2, h3, .deck_output_header strong {
   margin: 12px 0; }
 
 h1 {
-  font-family: 'Roboto Slab', serif;
-  color: white; }
+  font-family: 'Roboto Slab', serif; }
 
 h2 {
   font-family: 'Roboto Slab', serif;
-  color: white;
   font-size: 28px; }
 
 h3, .deck_output_header strong {
   font-family: "Oswald", sans-serif;
-  color: white;
   margin: 0; }
 
 h4, label {
   font-family: 'Oswald', sans-serif;
-  color: #DAFFED;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 1px; }
 
 h5 {
-  font-family: "Oswald", sans-serif;
-  font-size: 16px;
-  font-weight: bold;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 14px;
   margin: 5px; }
 
 body {
-  background-color: #090909;
+  background-color: white;
   overflow-x: hidden;
   font-family: "Roboto", sans-serif; }
 
@@ -1296,8 +1291,8 @@ a {
   color: inherit; }
 
 input, select {
-  border-radius: 50px;
-  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
   height: 29px;
   width: 220px;
   padding: 0px 7px;
@@ -1319,7 +1314,7 @@ header {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
   header .header_buttons_newdeck {
     display: block;
     position: relative;
@@ -1423,22 +1418,24 @@ footer {
       font-size: 2em; }
 
 .deck_inputs {
-  background-color: #558B6E;
   display: flex;
   align-items: center;
-  margin: 20px 0px; }
+  margin: 30px 0px 50px 0; }
   .deck_inputs:before {
     content: "";
     position: absolute;
     left: 0;
-    background-color: #558B6E;
+    background-color: #d1d8de;
     width: 100vw;
     height: 54px;
+    border: solid #495867;
+    border-width: 2px 0;
     z-index: -10; }
   .deck_inputs_group {
     margin-right: 50px; }
   .deck_inputs input, .deck_inputs select {
-    margin: 0 10px; }
+    margin: 0 10px;
+    border: 1px solid #495867; }
   @media screen and (max-width: 780px) {
     .deck_inputs {
       background-color: inherit;
@@ -1450,7 +1447,8 @@ footer {
         display: none; } }
 
 .card_search {
-  background-color: #495867;
+  background-color: #d1d8de;
+  border: 2px solid #495867;
   height: 470px; }
   .card_search_input {
     display: flex;
@@ -1459,11 +1457,11 @@ footer {
     .card_search_input input {
       width: 90%;
       height: 30px;
-      border-radius: 50px 0 0 50px; }
+      outline: 0;
+      border: 0; }
     .card_search_input button {
       width: 10%;
       height: 30px;
-      border-radius: 0px 50px 50px 0;
       border: 0;
       color: #DAFFED;
       background-color: #558B6E;
@@ -1490,11 +1488,9 @@ footer {
       transition: transform 100ms ease-out; }
       .card_search ul li:hover {
         background-color: #DAFFED;
-        cursor: pointer;
-        transform: scale(1.02); }
+        cursor: pointer; }
 
 .selected_card {
-  color: white;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   padding: 0 10px; }
@@ -1503,19 +1499,20 @@ footer {
     justify-content: center;
     width: 100%; }
   .selected_card img {
-    outline: 10px solid #090909;
     outline-offset: -10px;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto; }
-  .selected_card_details_head {
-    margin: 0 0 10px 0; }
-    .selected_card_details_head strong {
-      font-size: 16px; }
-  .selected_card_details_type {
-    margin: 10px 0; }
-  .selected_card_details_text {
-    line-height: 18px; }
+  .selected_card_details {
+    padding: 15px 5px; }
+    .selected_card_details_head {
+      margin: 0 0 10px 0; }
+      .selected_card_details_head strong {
+        font-size: 16px; }
+    .selected_card_details_type {
+      margin: 10px 0; }
+    .selected_card_details_text {
+      line-height: 18px; }
   .selected_card_buttons {
     margin-top: 15px; }
     .selected_card_buttons button {
@@ -1548,9 +1545,9 @@ footer {
   font-family: "Roboto Slab", serif; }
 
 .deck_output {
-  color: white;
   padding-top: 15px;
-  background-color: #558B6E;
+  background-color: #d1d8de;
+  border: 2px solid #495867;
   height: 470px; }
   .deck_output_header {
     display: flex;
@@ -1574,8 +1571,7 @@ footer {
       transition: transform 100ms ease-out; }
       .deck_output_cards div:hover {
         background-color: #DAFFED;
-        cursor: pointer;
-        transform: scale(1.05); }
+        cursor: pointer; }
     .deck_output_cards span {
       margin: 5px;
       font-size: 14px; }
@@ -1656,45 +1652,67 @@ footer {
       transform: scale(1.1); }
 
 .deck_item {
-  background-color: #DAFFED;
   padding: 10px;
+  overflow: hidden;
+  border: 2px solid #495867;
+  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   margin-bottom: 30px;
   transition: transform 200ms ease-in-out; }
   .deck_item_head {
+    border-radius: 5px 5px 0 0;
     display: flex;
     justify-content: space-between;
-    background-color: #232323;
+    background-color: #DAFFED;
+    box-sizing: border-box;
+    border-bottom: 2px solid #495867;
     margin: -10px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     padding: 10px;
-    color: white; }
+    color: #495867; }
   .deck_item h3, .deck_item .deck_output_header strong, .deck_output_header .deck_item strong {
-    color: #DAFFED;
+    color: black;
     margin-bottom: 5px;
     font-weight: normal; }
   .deck_item_format {
-    font-family: "Oswald", sans-serif; }
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px; }
   .deck_item_colors {
     height: 40px;
-    width: 120px;
+    width: 80px;
     display: flex; }
     .deck_item_colors .color {
       height: 100%;
       flex: 1; }
   .deck_item_bottom {
-    display: flex; }
+    background-size: 150%;
+    background-position: 35% 20%;
+    margin: -25px;
+    min-height: 220px;
+    position: relative; }
+    .deck_item_bottom:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.6); }
     .deck_item_bottom p {
-      width: 50%;
-      margin: 0;
-      padding-left: 15px;
-      font-size: 14px;
-      line-height: 19px; }
-  .deck_item_card {
-    width: 50%;
-    height: 200px;
-    background-position: -62px -59px;
-    background-size: 200%; }
+      width: 80%;
+      text-align: center;
+      margin: 0 auto;
+      color: #1f252b;
+      padding: 15px;
+      padding-top: 0;
+      font-size: 16px;
+      line-height: 24px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); }
   .deck_item:hover {
     transform: scale(1.05); }
 

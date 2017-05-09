@@ -25,7 +25,7 @@ class DeckList extends Component {
           if (deck.format) {
             return (
               <Link key={key} to={"decks/" + key}>
-              <div className="col-md-4">
+              <div className="col-sm-4">
               <Deck deck={deck}/>
               </div>
               </Link>
@@ -37,7 +37,7 @@ class DeckList extends Component {
           if (deck.format === this.state.selectedFormat) {
             return (
               <Link key={key} to={"decks/" + key}>
-              <div className="col-md-4">
+              <div className="col-sm-4">
               <Deck deck={deck}/>
               </div>
               </Link>

@@ -442,7 +442,7 @@ class DeckDetail extends Component {
             <p>{deck.description}</p>
 
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-sm-3">
 
                 <div className="deck_detail_active_card">
                   {this.state.activeCard &&
@@ -471,7 +471,7 @@ class DeckDetail extends Component {
                 <br />
               </div>
 
-              <div className="col-md-3">
+              <div className="col-sm-3">
                 <div className="deck_detail_well">
                   <div className="deck_detail_well_header">Creatures</div>
                   <div className="deck_detail_well_body">
@@ -487,7 +487,7 @@ class DeckDetail extends Component {
                 </div>
                 <br />
               </div>
-              <div className="col-md-3">
+              <div className="col-sm-3">
                 <div className="deck_detail_well">
                   <div className="deck_detail_well_header">Enchantments</div>
                   <div className="deck_detail_well_body">
@@ -509,7 +509,7 @@ class DeckDetail extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-sm-3">
                 <div className="deck_detail_well">
                   <div className="deck_detail_well_header">Lands</div>
                   <div className="deck_detail_well_body">

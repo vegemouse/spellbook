@@ -1,5 +1,5 @@
 body {
-  background-color: $black;
+  background-color: white;
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
 }
@@ -10,8 +10,8 @@ a {
 }
 
 input, select {
-  border-radius: 50px;
-  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
   height: 29px;
   width: 220px;
   padding: 0px 7px;

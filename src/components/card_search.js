@@ -45,7 +45,7 @@ class CardSearch extends Component {
       if (card.imageUrl) {
         return(
           <li key={card.id} onClick={() => this.handleCardClick(card)}>
-            <strong>{card.name}</strong>
+            <strong>{card.name}</strong> - ({card.set})
             <span className="pull-right">{card.types[0]}</span>
           </li>
         );
@@ -55,7 +55,7 @@ class CardSearch extends Component {
 
   render() {
     return(
-      <div className="card_search col-md-5">
+      <div className="card_search col-sm-5">
         <form onSubmit={this.handleSubmit}>
           <h4>Search Card Name</h4>
           <div className="card_search_input"><input type="text" value={this.state.inputtedCard} onChange={this.handleSearchChange} />

@@ -7,15 +7,15 @@ export default class Deck extends Component {
     if (this.props.deck.colors) {
       return this.props.deck.colors.map((color) => {
         if (color === "U") {
-          color = "blue";
+          color = "#587dbc";
         } else if (color === "R") {
-          color = "red";
+          color = "#b25252";
         } else if (color === "G") {
-          color = "green";
+          color = "#79af7d";
         } else if (color === "B") {
-          color = "black";
+          color = "#010b1c";
         } else if (color === "W") {
-          color = "white";
+          color = "#f4f4e3";
         }
         const colorStyle = {
           backgroundColor: color,
@@ -27,7 +27,7 @@ export default class Deck extends Component {
     }
   }
 
-  renderCard() {
+  renderDeckBottom() {
     const cards = this.props.deck.cards;
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
 
@@ -35,7 +35,13 @@ export default class Deck extends Component {
       backgroundImage: `url(${randomCard.imageUrl})`,
     }
 
-    return <div className="deck_item_card" style={cardStyle} />
+    return(
+      <div className="deck_item_bottom" style={cardStyle}>
+        <p>
+        {this.props.deck.description.slice(0, 180)}...<br /><strong>(Read more)</strong>
+        </p>
+      </div>
+    );
   }
 
   render() {
@@ -48,13 +54,7 @@ export default class Deck extends Component {
             {this.renderColors()}
           </div>
         </div>
-        <div className="deck_item_bottom">
-          {this.renderCard()}
-          <p>
-          <strong>{this.props.deck.cards.length} cards</strong><br />
-          {this.props.deck.description.slice(0, 170)}... <strong>More Info</strong>
-          </p>
-        </div>
+        {this.renderDeckBottom()}
       </div>
 
     );
