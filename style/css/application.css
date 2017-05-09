@@ -1781,8 +1781,7 @@ footer {
   font-family: "Oswald", sans-serif; }
 
 .sample_hand {
-  width: 100%;
-  margin-top: 20px; }
+  width: 100%; }
   .sample_hand img {
     width: 14.28%;
     align-items: baseline; }
@@ -1792,6 +1791,7 @@ footer {
   transition: all 200ms ease-out;
   border: 0;
   color: white;
+  margin: 20px 0;
   padding: 10px; }
   .hand_button:hover, .hand_button:active, .hand_button:focus {
     background-color: #253c2f;

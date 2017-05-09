@@ -60,7 +60,6 @@
 
 .sample_hand {
   width: 100%;
-  margin-top: 20px;
   img {
     width: 14.28%;
     align-items: baseline;
@@ -69,5 +68,6 @@
 
 .hand_button {
   @include button($green);
+  margin: 20px 0;
   padding: 10px;
 }

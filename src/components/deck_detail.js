@@ -64,23 +64,23 @@ class DeckDetail extends Component {
       <PieChart
       slices={[
         {
-          color: 'red',
+          color: '#b25252',
           value: red,
         },
         {
-          color: 'green',
+          color: '#79af7d',
           value: green,
         },
         {
-          color: 'blue',
+          color: '#587dbc',
           value: blue,
         },
         {
-          color: 'white',
+          color: '#f4f4e3',
           value: white,
         },
         {
-          color: 'black',
+          color: '#010b1c',
           value: black,
         },
       ]}
@@ -439,7 +439,7 @@ class DeckDetail extends Component {
             <h2>{deck.name}</h2>
             <span className="deck_detail_format">{deck.format} deck</span>
             <br />
-            <p class="deck_detail_description">{deck.description}</p>
+            <p className="deck_detail_description">{deck.description}</p>
 
             <div className="row">
               <div className="col-sm-3">
@@ -524,7 +524,7 @@ class DeckDetail extends Component {
                 </div>
               </div>
             </div>
-            <button className="hand_button" onClick={() => this.handleHandClick()}> Get Sample Hand</button>
+            <button className="hand_button" onClick={() => this.handleHandClick()}> Show Sample Hand</button>
             {this.state.handShown &&
               <SampleHand deck={this.props.deck}/>
             }
