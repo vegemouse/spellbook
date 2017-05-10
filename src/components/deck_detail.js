@@ -192,7 +192,7 @@ class DeckDetail extends Component {
     } else {
       return (
         <div>
-        <h2>Loading Deck...</h2>
+        <h3 className="loading">loading deck...</h3>
         </div>
       )
     }

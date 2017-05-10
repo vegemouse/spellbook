@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import AnimateOnChange from 'react-animate-on-change';
 
 export default class Deck extends Component {
 
@@ -46,17 +47,22 @@ export default class Deck extends Component {
 
   render() {
     return (
-      <div className="deck_item">
-        <div className="deck_item_head">
-          <div><h3>{this.props.deck.name}</h3>
-          <span className="deck_item_format">{this.props.deck.format} deck</span></div>
-          <div className="deck_item_colors">
-            {this.renderColors()}
+      <AnimateOnChange
+        baseClassName="deck"
+        animationClassName="deck-animate"
+        animate={true}
+      >
+        <div className="deck_item">
+          <div className="deck_item_head">
+            <div><h3>{this.props.deck.name}</h3>
+            <span className="deck_item_format">{this.props.deck.format} deck</span></div>
+            <div className="deck_item_colors">
+              {this.renderColors()}
+            </div>
           </div>
+          {this.renderDeckBottom()}
         </div>
-        {this.renderDeckBottom()}
-      </div>
-
+      </AnimateOnChange>
     );
   }
 }

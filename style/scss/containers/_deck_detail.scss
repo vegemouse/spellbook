@@ -80,3 +80,20 @@
 .active-card-animate {
   animation: fadeIn 0.25s;
 }
+
+.hand-container {
+  overflow-x: hidden;
+}
+
+.hand-card {
+  position: relative;
+  &-animate {
+    box-sizing: border-box;
+  }
+}
+
+@for $i from 1 through 7 {
+  .hand-card-animate:nth-of-type(#{$i}) {
+    animation: slideIn #{($i /10)}s;
+  }
+}

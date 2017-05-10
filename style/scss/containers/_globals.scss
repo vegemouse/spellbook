@@ -24,6 +24,18 @@ input, select {
   }
 }
 
+#wrapper {
+  min-height: 90vh;
+}
+
 .container {
   min-height: 90vh;
+}
+
+.loading {
+  width: 100%;
+  text-align: center;
+  opacity: 0.4;
+  font-size: 3em;
+  animation: loading 3s infinite;
 }

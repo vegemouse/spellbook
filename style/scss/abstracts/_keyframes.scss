@@ -2,3 +2,18 @@
   from {opacity: 0.01}
   to {opacity: 1}
 }
+
+@keyframes slideIn {
+  from {left: -100%}
+  to {left: 0}
+}
+
+@keyframes slideDown {
+  from {top: 20px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+@keyframes loading {
+  0%, 100% {letter-spacing: 1px}
+  50% {letter-spacing: 10px}
+}

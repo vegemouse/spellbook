@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnimateOnChange from 'react-animate-on-change';
 
 export default class SampleHand extends Component {
   constructor(props) {
@@ -32,8 +33,15 @@ export default class SampleHand extends Component {
     var shuffledDeck = shuffle([ ...this.props.deck.cards ]);
 
     return shuffledDeck.slice(0, this.state.cardsInHand).map((card) => {
-      return <img alt={card.name} key={card.id + Math.floor(Math.random() * 999)} src={card.imageUrl} />
-    })
+      return(
+        <AnimateOnChange
+          baseClassName="hand-card"
+          animationClassName="hand-card-animate"
+          animate={true}>
+          <img alt={card.name} key={card.id + Math.floor(Math.random() * 999)} src={card.imageUrl} />
+        </AnimateOnChange>
+      );
+    });
   }
 
   render() {

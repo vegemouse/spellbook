@@ -1286,6 +1286,23 @@ h5 {
     opacity: 0.01; }
   to {
     opacity: 1; } }
+@keyframes slideIn {
+  from {
+    left: -100%; }
+  to {
+    left: 0; } }
+@keyframes slideDown {
+  from {
+    top: 20px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+@keyframes loading {
+  0%, 100% {
+    letter-spacing: 1px; }
+  50% {
+    letter-spacing: 10px; } }
 body {
   background-color: white;
   overflow-x: hidden;
@@ -1308,8 +1325,18 @@ input, select {
     outline: 0;
     background-color: #DAFFED; }
 
+#wrapper {
+  min-height: 90vh; }
+
 .container {
   min-height: 90vh; }
+
+.loading {
+  width: 100%;
+  text-align: center;
+  opacity: 0.4;
+  font-size: 3em;
+  animation: loading 3s infinite; }
 
 header {
   background-color: #495867;
@@ -1429,9 +1456,9 @@ footer {
   .deck_inputs:before {
     content: "";
     position: absolute;
-    left: 0;
+    left: -300px;
     background-color: #d1d8de;
-    width: 100vw;
+    width: 200vw;
     height: 54px;
     border: solid #495867;
     border-width: 2px 0;
@@ -1498,7 +1525,8 @@ footer {
 .selected_card {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  padding: 10px; }
+  padding: 10px;
+  transition: height 200ms; }
   .selected_card_image {
     display: flex;
     justify-content: center;
@@ -1649,6 +1677,9 @@ footer {
       cursor: pointer;
       transform: scale(1.1); }
 
+.active-card-animate {
+  animation: fadeIn 1s; }
+
 .deck_item {
   padding: 10px;
   overflow: hidden;
@@ -1712,7 +1743,12 @@ footer {
       top: 50%;
       transform: translate(-50%, -50%); }
   .deck_item:hover {
-    transform: scale(1.05); }
+    transform: scale(1.03); }
+
+.deck {
+  position: relative; }
+  .deck-animate {
+    animation: slideDown 0.5s; }
 
 .deck_detail {
   margin-bottom: 20px; }
@@ -1810,6 +1846,35 @@ footer {
 
 .active-card-animate {
   animation: fadeIn 0.25s; }
+
+.hand-container {
+  overflow-x: hidden; }
+
+.hand-card {
+  position: relative; }
+  .hand-card-animate {
+    box-sizing: border-box; }
+
+.hand-card-animate:nth-of-type(1) {
+  animation: slideIn 0.1s; }
+
+.hand-card-animate:nth-of-type(2) {
+  animation: slideIn 0.2s; }
+
+.hand-card-animate:nth-of-type(3) {
+  animation: slideIn 0.3s; }
+
+.hand-card-animate:nth-of-type(4) {
+  animation: slideIn 0.4s; }
+
+.hand-card-animate:nth-of-type(5) {
+  animation: slideIn 0.5s; }
+
+.hand-card-animate:nth-of-type(6) {
+  animation: slideIn 0.6s; }
+
+.hand-card-animate:nth-of-type(7) {
+  animation: slideIn 0.7s; }
 
 .intro {
   background-color: black;

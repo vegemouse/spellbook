@@ -6,9 +6,9 @@
     &:before {
       content: "";
       position: absolute;
-      left: 0;
+      left: -300px;
       background-color: lighten($blue, 50%);
-      width: 100vw;
+      width: 200vw;
       height: 54px;
       border: solid $blue;
       border-width: 2px 0;
@@ -86,6 +86,7 @@
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   padding: 10px;
+  transition: height 200ms;
   &_image {
     display: flex;
     justify-content: center;
@@ -239,5 +240,11 @@
     text-decoration: none;
     margin-right: 30px;
     font-family: "Oswald", sans-serif;
+  }
+}
+
+.active-card {
+  &-animate {
+    animation: fadeIn 1s;
   }
 }

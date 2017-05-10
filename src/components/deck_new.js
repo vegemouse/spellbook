@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import axios from "axios";
 import { connect } from 'react-redux';
 import CardSearch from './card_search';
-
+import AnimateOnChange from 'react-animate-on-change';
 
 class NewDeck extends Component {
   constructor(props) {
@@ -199,27 +199,33 @@ class NewDeck extends Component {
 
           <CardSearch />
 
-          <div className="col-sm-4 selected_card">
-            {!this.props.selectedCard &&
-              <h5>To begin, please search for a card.</h5>
-            }
-            {this.props.selectedCard &&
-              <div>
-                <div className="selected_card_image"><img src={this.props.selectedCard.imageUrl} alt={this.props.selectedCard.name} /></div>
-                <div className="selected_card_details">
-                  <div className="selected_card_details_head"><strong>{this.props.selectedCard.name}</strong>
-                  <span className="pull-right cmc">{this.props.selectedCard.cmc}</span></div>
-                  <div className="selected_card_details_type">{this.props.selectedCard.type}</div>
-                  <div className="selected_card_details_text">{this.props.selectedCard.text}</div>
-                  <div className="selected_card_buttons">
-                    <button onClick={this.addCard(this.props.selectedCard)}>+1</button>
-                    <button onClick={this.addFour(this.props.selectedCard)}>+4</button>
-                    <button className="pull-right" onClick={this.addSideboard(this.props.selectedCard)}>+SB</button>
+          <AnimateOnChange
+            baseClassName="active-card"
+            animationClassName="active-card-animate"
+            animate={true}
+          >
+            <div className="col-sm-4 selected_card">
+              {!this.props.selectedCard &&
+                <h5>To begin, please search for a card.</h5>
+              }
+              {this.props.selectedCard &&
+                <div>
+                  <div className="selected_card_image"><img src={this.props.selectedCard.imageUrl} alt={this.props.selectedCard.name} /></div>
+                  <div className="selected_card_details">
+                    <div className="selected_card_details_head"><strong>{this.props.selectedCard.name}</strong>
+                    <span className="pull-right cmc">{this.props.selectedCard.cmc}</span></div>
+                    <div className="selected_card_details_type">{this.props.selectedCard.type}</div>
+                    <div className="selected_card_details_text">{this.props.selectedCard.text}</div>
+                    <div className="selected_card_buttons">
+                      <button onClick={this.addCard(this.props.selectedCard)}>+1</button>
+                      <button onClick={this.addFour(this.props.selectedCard)}>+4</button>
+                      <button className="pull-right" onClick={this.addSideboard(this.props.selectedCard)}>+SB</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            }
-          </div>
+              }
+            </div>
+          </AnimateOnChange>
 
           <div className="col-sm-4 deck_output">
             <div className="deck_output_header"><h5>{this.state.deckName}</h5><label>{this.state.mainDeckArray.length} cards</label></div>
