@@ -115,7 +115,7 @@ class DeckList extends Component {
               <label>Deck Search</label>
               <SearchBar onSearchTermChange={deckSearch} />
             </div>
-
+            <br className="hidden_large"/>
             <div className="filter">
               <label>Format Filter</label>
               <select value={this.state.selectedFormat} onChange={this.handleFormatChange}>

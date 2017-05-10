@@ -1347,7 +1347,7 @@ input, select {
     background-color: #e8f9f1; }
 
 #wrapper {
-  min-height: 70vh; }
+  min-height: 75vh; }
 
 .container {
   margin-top: 60px;
@@ -1362,10 +1362,14 @@ input, select {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, 20%); }
 
 * {
   transition: width 300ms; }
+
+@media screen and (min-width: 780px) {
+  .hidden_large {
+    display: none; } }
 
 header {
   background-color: #495867;
@@ -1501,7 +1505,8 @@ footer {
     border: 1px solid #495867; }
   @media screen and (max-width: 780px) {
     .deck_inputs {
-      background-color: inherit;
+      background-color: #d1d8de;
+      border: 2px solid #495867;
       display: block;
       padding: 10px; }
       .deck_inputs input, .deck_inputs select {

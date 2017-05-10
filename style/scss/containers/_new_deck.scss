@@ -25,7 +25,8 @@
     }
 
     @media screen and (max-width: 780px) {
-      background-color: inherit;
+      background-color: lighten($blue, 50%);
+      border: 2px solid $blue;
       display: block;
       padding: 10px;
       input, select {
