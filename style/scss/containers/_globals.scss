@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: lighten($white, 6%);
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
 }
@@ -25,11 +25,12 @@ input, select {
 }
 
 #wrapper {
-  min-height: 90vh;
+  min-height: 50vh;
 }
 
 .container {
   min-height: 90vh;
+  max-width: 100%;
 }
 
 .loading {
@@ -38,4 +39,8 @@ input, select {
   opacity: 0.4;
   font-size: 3em;
   animation: loading 3s infinite;
+}
+
+* {
+  transition: width 300ms;
 }

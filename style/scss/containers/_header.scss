@@ -1,7 +1,6 @@
 @mixin buttonsDiv() {
   display: block;
   position: relative;
-  left: 25px;
   .build {
     @include button($green);
     padding: 10px;

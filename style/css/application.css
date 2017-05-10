@@ -1281,16 +1281,37 @@ h5 {
   font-size: 14px;
   margin: 5px; }
 
+.hand-card-animate:nth-of-type(1) {
+  animation: slideIn 0.1s; }
+
+.hand-card-animate:nth-of-type(2) {
+  animation: slideIn 0.2s; }
+
+.hand-card-animate:nth-of-type(3) {
+  animation: slideIn 0.3s; }
+
+.hand-card-animate:nth-of-type(4) {
+  animation: slideIn 0.4s; }
+
+.hand-card-animate:nth-of-type(5) {
+  animation: slideIn 0.5s; }
+
+.hand-card-animate:nth-of-type(6) {
+  animation: slideIn 0.6s; }
+
+.hand-card-animate:nth-of-type(7) {
+  animation: slideIn 0.7s; }
+
 @keyframes fadeIn {
   from {
     opacity: 0.01; }
   to {
     opacity: 1; } }
-@keyframes slideIn {
+@keyframes dealUp {
   from {
-    left: -100%; }
+    bottom: -100vw; }
   to {
-    left: 0; } }
+    bottom: 0; } }
 @keyframes slideDown {
   from {
     top: 20px;
@@ -1323,13 +1344,14 @@ input, select {
   font-family: "Roboto", sans-serif; }
   input:focus, select:focus {
     outline: 0;
-    background-color: #DAFFED; }
+    background-color: #e8f9f1; }
 
 #wrapper {
-  min-height: 90vh; }
+  min-height: 50vh; }
 
 .container {
-  min-height: 90vh; }
+  min-height: 90vh;
+  max-width: 100%; }
 
 .loading {
   width: 100%;
@@ -1337,6 +1359,9 @@ input, select {
   opacity: 0.4;
   font-size: 3em;
   animation: loading 3s infinite; }
+
+* {
+  transition: width 300ms; }
 
 header {
   background-color: #495867;
@@ -1349,8 +1374,7 @@ header {
   margin-bottom: 20px; }
   header .header_buttons_newdeck {
     display: block;
-    position: relative;
-    left: 25px; }
+    position: relative; }
     header .header_buttons_newdeck .build {
       background-color: #558B6E;
       transition: all 200ms ease-out;
@@ -1395,7 +1419,6 @@ header {
     .header_buttons_newdeck_small {
       display: block;
       position: relative;
-      left: 25px;
       margin-right: 25px; }
       .header_buttons_newdeck_small .build {
         background-color: #558B6E;
@@ -1442,7 +1465,7 @@ footer {
     text-align: center;
     padding-top: 15px; }
     footer .footer_content a {
-      color: #a7ffd4;
+      color: #c0eed8;
       transition: color 150ms linear; }
       footer .footer_content a:hover {
         color: white; }
@@ -1495,7 +1518,7 @@ footer {
       width: 10%;
       height: 30px;
       border: 0;
-      color: #DAFFED;
+      color: #e8f9f1;
       background-color: #558B6E;
       transition: all 200ms ease-out;
       border: 0;
@@ -1519,7 +1542,7 @@ footer {
       transition: background-color 200ms ease-out;
       transition: transform 100ms ease-out; }
       .card_search ul li:hover {
-        background-color: #DAFFED;
+        background-color: #e8f9f1;
         cursor: pointer; }
 
 .selected_card {
@@ -1603,7 +1626,7 @@ footer {
       padding: 3px 0;
       transition: transform 100ms ease-out; }
       .deck_output_cards div:hover {
-        background-color: #DAFFED;
+        background-color: #e8f9f1;
         cursor: pointer; }
     .deck_output_cards span {
       margin: 5px;
@@ -1635,7 +1658,7 @@ footer {
     font-family: "Roboto", sans-serif;
     border: 2px solid #495867; }
   .deck_bottom .deck_bottom_buttons {
-    background-color: #DAFFED;
+    background-color: #e8f9f1;
     padding: 20px;
     margin: 0 -15px;
     margin-top: 30px;
@@ -1692,7 +1715,7 @@ footer {
     border-radius: 5px 5px 0 0;
     display: flex;
     justify-content: space-between;
-    background-color: #DAFFED;
+    background-color: #e8f9f1;
     box-sizing: border-box;
     border-bottom: 2px solid #495867;
     margin: -10px;
@@ -1736,7 +1759,7 @@ footer {
       color: #1f252b;
       padding: 15px;
       padding-top: 0;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 24px;
       position: absolute;
       left: 50%;
@@ -1750,6 +1773,9 @@ footer {
   .deck-animate {
     animation: slideDown 0.5s; }
 
+.filter {
+  display: inline; }
+
 .deck_detail {
   margin-bottom: 20px; }
   .deck_detail h2 {
@@ -1762,7 +1788,7 @@ footer {
     margin-bottom: 10px; }
     .deck_detail_colors_header {
       border-bottom: 2px solid #495867;
-      background-color: #DAFFED;
+      background-color: #e8f9f1;
       text-align: center;
       font-family: "Oswald", sans-serif;
       padding: 10px 0; }
@@ -1781,7 +1807,7 @@ footer {
     margin-bottom: 10px; }
     .deck_detail_cmc_header {
       border-bottom: 2px solid #495867;
-      background-color: #DAFFED;
+      background-color: #e8f9f1;
       text-align: center;
       font-family: "Oswald", sans-serif;
       padding: 10px 0; }
@@ -1793,7 +1819,7 @@ footer {
     margin-bottom: 10px; }
     .deck_detail_well_header {
       border-bottom: 2px solid #495867;
-      background-color: #DAFFED;
+      background-color: #e8f9f1;
       text-align: center;
       font-family: "Oswald", sans-serif;
       padding: 10px 0; }
@@ -1856,25 +1882,25 @@ footer {
     box-sizing: border-box; }
 
 .hand-card-animate:nth-of-type(1) {
-  animation: slideIn 0.1s; }
+  animation: dealUp 0.1s; }
 
 .hand-card-animate:nth-of-type(2) {
-  animation: slideIn 0.2s; }
+  animation: dealUp 0.2s; }
 
 .hand-card-animate:nth-of-type(3) {
-  animation: slideIn 0.3s; }
+  animation: dealUp 0.3s; }
 
 .hand-card-animate:nth-of-type(4) {
-  animation: slideIn 0.4s; }
+  animation: dealUp 0.4s; }
 
 .hand-card-animate:nth-of-type(5) {
-  animation: slideIn 0.5s; }
+  animation: dealUp 0.5s; }
 
 .hand-card-animate:nth-of-type(6) {
-  animation: slideIn 0.6s; }
+  animation: dealUp 0.6s; }
 
 .hand-card-animate:nth-of-type(7) {
-  animation: slideIn 0.7s; }
+  animation: dealUp 0.7s; }
 
 .intro {
   background-color: black;

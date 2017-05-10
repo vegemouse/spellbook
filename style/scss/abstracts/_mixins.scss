@@ -25,3 +25,9 @@
     padding: 10px;
   }
 }
+
+@for $i from 1 through 7 {
+  .hand-card-animate:nth-of-type(#{$i}) {
+    animation: slideIn #{($i /10)}s;
+  }
+}

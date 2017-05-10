@@ -30,7 +30,7 @@ class DeckList extends Component {
           return _.map(this.props.decks, (deck, key) => {
             return (
                 <Link key={key} to={"decks/" + key}>
-                    <div className="col-sm-4">
+                    <div className="col-sm-6 col-md-4">
                       <Deck deck={deck}/>
                     </div>
                 </Link>
@@ -42,7 +42,7 @@ class DeckList extends Component {
             if (deck.format === this.state.selectedFormat) {
               return (
                 <Link key={key} to={"decks/" + key}>
-                  <div className="col-sm-4">
+                  <div className="col-sm-6 col-md-4">
                     <Deck deck={deck}/>
                   </div>
                 </Link>
@@ -57,7 +57,7 @@ class DeckList extends Component {
             if (deck.name.toLowerCase().includes(this.state.inputtedName.toLowerCase())) {
               return (
                 <Link key={key} to={"decks/" + key}>
-                  <div className="col-sm-4">
+                  <div className="col-sm-6 col-md-4">
                     <Deck deck={deck}/>
                   </div>
                 </Link>
@@ -71,7 +71,7 @@ class DeckList extends Component {
               if (deck.format === this.state.selectedFormat && deck.name.toLowerCase().includes(this.state.inputtedName.toLowerCase())) {
                 return (
                   <Link key={key} to={"decks/" + key}>
-                    <div className="col-sm-4">
+                    <div className="col-sm-6 col-md-4">
                       <Deck deck={deck}/>
                     </div>
                   </Link>
@@ -86,13 +86,19 @@ class DeckList extends Component {
     }
   }
 
-
   handleFormatChange(event) {
     this.setState({selectedFormat: event.target.value});
   }
 
   deckSearch(term) {
     this.setState({inputtedName: term});
+  }
+
+  clearFilters() {
+    this.setState({
+      selectedFormat: "All",
+      inputtedName: null
+    });
   }
 
   render() {
@@ -105,23 +111,28 @@ class DeckList extends Component {
         <div className="deck_inputs row">
           <div className="deck_inputs_group">
 
-            <label>Deck Search</label>
-            <SearchBar onSearchTermChange={deckSearch} />&nbsp;&nbsp;&nbsp;
+            <div className="filter">
+              <label>Deck Search</label>
+              <SearchBar onSearchTermChange={deckSearch} />
+            </div>
 
-            <label>Format Filter</label>
-            <select value={this.state.selectedFormat} onChange={this.handleFormatChange}>
-              <option value="All">All Formats</option>
-              <option value="Standard">Standard</option>
-              <option value="Modern">Modern</option>
-              <option value="Legacy">Legacy</option>
-              <option value="Vintage">Vintage</option>
-              <option value="EDH/Commander">EDH/Commander</option>
-              <option value="Pauper">Pauper</option>
-              <option value="Peasant">Peasant</option>
-              <option value="Archenemy">Archenemy</option>
-              <option value="Vanguard">Vanguard</option>
-              <option value="Planechase">Planechase</option>
-            </select>
+            <div className="filter">
+              <label>Format Filter</label>
+              <select value={this.state.selectedFormat} onChange={this.handleFormatChange}>
+                <option value="All">All Formats</option>
+                <option value="Standard">Standard</option>
+                <option value="Modern">Modern</option>
+                <option value="Legacy">Legacy</option>
+                <option value="Vintage">Vintage</option>
+                <option value="EDH/Commander">EDH/Commander</option>
+                <option value="Pauper">Pauper</option>
+                <option value="Peasant">Peasant</option>
+                <option value="Archenemy">Archenemy</option>
+                <option value="Vanguard">Vanguard</option>
+                <option value="Planechase">Planechase</option>
+              </select>
+            </div>
+            <i className="fa fa-times" aria-hidden="true" onClick={this.clearFilters.bind(this)}></i>
           </div>
         </div>
 
