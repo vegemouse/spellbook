@@ -15,6 +15,7 @@ class NewDeck extends Component {
       searchSubmitted: false,
       mainDeckArray: [],
       sideboardArray: [],
+      maybeboardArray: [],
       deckName: '',
       deckFormat: '',
       deckDescription: '',
@@ -48,6 +49,12 @@ class NewDeck extends Component {
     }.bind(this);
   }
 
+  addMaybeboard(card) {
+    return function() {
+      this.setState({maybeboardArray: this.state.maybeboardArray.concat([card])});
+    }.bind(this);
+  }
+
   removeCard(card) {
     return function() {
       const mainDeck = this.state.mainDeckArray.slice();
@@ -69,6 +76,18 @@ class NewDeck extends Component {
         }
       }
       this.setState({sideboardArray: sideboard});
+    }.bind(this);
+  }
+
+  removeCardFromMaybeboard(card) {
+    return function() {
+      const maybeboard = this.state.maybeboardArray.slice();
+      for(var i = maybeboard.length - 1; i>=0; i--) {
+        if (maybeboard[i].id === card.id) {
+          maybeboard.splice(i, 1);
+        }
+      }
+      this.setState({maybeboardArray: maybeboard});
     }.bind(this);
   }
 
@@ -104,6 +123,7 @@ class NewDeck extends Component {
           description: this.state.deckDescription,
           cards: this.state.mainDeckArray,
           sideboard: this.state.sideboardArray,
+          maybeboard: this.state.maybeboardArray,
           colors: this.getColors(this.state.mainDeckArray)
         }
         this.props.createDeck(deck).then(() => {
@@ -171,6 +191,26 @@ class NewDeck extends Component {
     });
   }
 
+  renderMaybeboard() {
+    var sortedCards = this.state.maybeboardArray.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+
+    return sortedCards.map((card) => {
+      if (card.imageUrl) {
+        return(
+          <div>
+            <span key={card.id}>
+              <span key={card.id + Math.floor(Math.random() * 999)} onClick={() => this.handleCardClick(card)}><strong>{card.name}</strong></span><button onClick={this.removeCardFromMaybeboard(card)}><i className="fa fa-minus" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        );
+      }
+    });
+  }
+
   render() {
     return (
       <div className="container deck">
@@ -219,6 +259,7 @@ class NewDeck extends Component {
                     <div className="selected_card_buttons">
                       <button onClick={this.addCard(this.props.selectedCard)}>+1</button>
                       <button onClick={this.addFour(this.props.selectedCard)}>+4</button>
+                      <button className="pull-right" onClick={this.addMaybeboard(this.props.selectedCard)}>+?</button>
                       <button className="pull-right" onClick={this.addSideboard(this.props.selectedCard)}>+SB</button>
                     </div>
                   </div>
@@ -236,6 +277,9 @@ class NewDeck extends Component {
               <br />
               <h5>Sideboard</h5>
               {this.renderSideboard()}
+              <br />
+              <h5>Maybeboard</h5>
+              {this.renderMaybeboard()}
             </div>
           </div>
         </div>

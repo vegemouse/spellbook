@@ -1347,10 +1347,10 @@ input, select {
     background-color: #e8f9f1; }
 
 #wrapper {
-  min-height: 50vh; }
+  min-height: 70vh; }
 
 .container {
-  min-height: 90vh;
+  margin-top: 60px;
   max-width: 100%; }
 
 .loading {
@@ -1358,7 +1358,11 @@ input, select {
   text-align: center;
   opacity: 0.4;
   font-size: 3em;
-  animation: loading 3s infinite; }
+  animation: loading 3s infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 * {
   transition: width 300ms; }
@@ -1371,7 +1375,11 @@ header {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100; }
   header .header_buttons_newdeck {
     display: block;
     position: relative; }
@@ -1579,14 +1587,13 @@ footer {
       height: 43px;
       width: 45px;
       font-size: 24px;
-      font-family: "Oswald", sans-serif; }
+      font-family: "Oswald", sans-serif;
+      margin-right: 10px; }
       .selected_card_buttons button:hover, .selected_card_buttons button:active, .selected_card_buttons button:focus {
         background-color: #253c2f;
         outline: 0;
         cursor: pointer;
         transform: scale(1.1); }
-      .selected_card_buttons button:first-of-type {
-        margin-right: 10px; }
 
 .cmc {
   display: flex;
@@ -1911,7 +1918,8 @@ footer {
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  z-index: 500; }
   .intro_content {
     position: absolute;
     left: 50%;

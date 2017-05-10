@@ -25,11 +25,11 @@ input, select {
 }
 
 #wrapper {
-  min-height: 50vh;
+  min-height: 70vh;
 }
 
 .container {
-  min-height: 90vh;
+  margin-top: 60px; 
   max-width: 100%;
 }
 
@@ -39,6 +39,10 @@ input, select {
   opacity: 0.4;
   font-size: 3em;
   animation: loading 3s infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 * {

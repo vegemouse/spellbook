@@ -34,7 +34,9 @@ class DeckDetail extends Component {
 
   renderCards(cardType) {
     let cardArray = [];
-    if (cardType === "Sideboard") {
+    if (cardType === "Maybeboard") {
+      cardArray = this.props.deck.maybeboard;
+    } else if (cardType === "Sideboard") {
       cardArray = this.props.deck.sideboard;
     } else {
       let cards = this.props.deck.cards;
@@ -182,6 +184,14 @@ class DeckDetail extends Component {
                 {this.renderCards("Sideboard")}
                 </div>
               </div>
+
+              <div className="deck_detail_well">
+                <div className="deck_detail_well_header">Maybeboard</div>
+                <div className="deck_detail_well_body">
+                {this.renderCards("Maybeboard")}
+                </div>
+              </div>
+
             </div>
           </div>
           <br />
