@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import AnimateOnChange from 'react-animate-on-change';
+import moment from 'moment';
 
 export default class Deck extends Component {
 
@@ -39,7 +40,9 @@ export default class Deck extends Component {
     return(
       <div className="deck_item_bottom" style={cardStyle}>
         <p>
-        {this.props.deck.description.slice(0, 180)}...<br /><strong>(Read more)</strong>
+
+        {this.props.deck.description.slice(0, 180)}...<br /><strong>(Read more)</strong><br />
+        <strong>Uploaded {this.props.deck.uploadDate && moment(this.props.deck.uploadDate).format('M.D.YY')}</strong>
         </p>
       </div>
     );

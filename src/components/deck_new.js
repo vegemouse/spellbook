@@ -110,13 +110,14 @@ class NewDeck extends Component {
 
   checkError() {
     if (this.state.error) {
-      return <div className="row error">*Please ensure all fields are filled out.</div>;
+      return <div className="row error">*Please fill out all the fields.</div>;
     }
   }
 
   saveDeck() {
     return function() {
       if(this.state.deckName && this.state.deckFormat && this.state.deckDescription && this.state.mainDeckArray.length > 0) {
+        let now = new Date();
         const deck = {
           name: this.state.deckName,
           format: this.state.deckFormat,
@@ -124,7 +125,8 @@ class NewDeck extends Component {
           cards: this.state.mainDeckArray,
           sideboard: this.state.sideboardArray,
           maybeboard: this.state.maybeboardArray,
-          colors: this.getColors(this.state.mainDeckArray)
+          colors: this.getColors(this.state.mainDeckArray),
+          uploadDate: now
         }
         this.props.createDeck(deck).then(() => {
       this.context.router.push('/decks');
