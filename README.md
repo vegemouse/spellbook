@@ -29,8 +29,9 @@
 
 * Proxy Page
 * Copy deck to plaintext
-* Add Date(And uploader) property to deck (Search by date and uploader)
-* Add functional 20 sided dice to intro page
-* Maybeboard
+* Add uploader property to deck (Search by uploader)
+* Add functional 20 sided dice to intro page (maybe)
+* Make header smaller on scroll
+* Fix responsive issues on medium screen size.
 
 Copyright (c) 2017
