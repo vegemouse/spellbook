@@ -50,6 +50,7 @@
     "babel-preset-stage-1": "^6.1.18",
     "firebase": "^2.4.2",
     "lodash": "^3.10.1",
+    "moment": "^2.18.1",
     "react": "^0.14.3",
     "react-addons-css-transition-group": "^15.5.2",
     "react-animate-on-change": "^0.2.1",
