@@ -1930,8 +1930,7 @@ footer {
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100%;
-  overflow-y: scroll;
+  height: 1000%;
   background-color: white;
   text-align: center; }
   .proxy-page img {
