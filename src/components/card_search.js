@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { fetchCards, selectCard } from '../actions/index';
 import { connect } from 'react-redux';
+import SearchBar from './search_bar';
 
 class CardSearch extends Component {
   constructor(props) {
@@ -10,20 +11,6 @@ class CardSearch extends Component {
       inputtedCard: '',
       searchSubmitted: false,
     };
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSearchChange(event) {
-    this.setState({inputtedCard: event.target.value});
-    this.setState({searchSubmitted: false});
-  }
-
-  handleSubmit(event) {
-    this.setState({inputtedCard: event.target.value});
-    this.props.fetchCards(this.state.inputtedCard);
-    this.setState({searchSubmitted: true});
-    event.preventDefault();
   }
 
   handleCardClick(card) {
@@ -53,13 +40,23 @@ class CardSearch extends Component {
     });
   }
 
+  cardSearch(term) {
+    this.setState({inputtedCard: term});
+    if (this.state.inputtedCard) {
+      this.props.fetchCards(this.state.inputtedCard);
+    }
+    this.setState({searchSubmitted: true});
+  }
+
   render() {
+
+    const cardSearch = _.debounce((term) => {this.cardSearch(term)}, 300);
+
     return(
       <div className="card_search col-sm-4">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <h4>Search Card Name</h4>
-          <div className="card_search_input"><input type="text" value={this.state.inputtedCard} onChange={this.handleSearchChange} />
-          <button type="submit"><i className="fa fa-search" aria-hidden="true"></i></button></div>
+          <SearchBar placeholder="Jace, the Mind Sculptor" onSearchTermChange={cardSearch} />
         </form>
         <ul>
           {this.renderResults()}

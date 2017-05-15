@@ -240,8 +240,8 @@ class NewDeck extends Component {
         <h2>Build a New Deck</h2>
         {this.checkError()}
         <div className="deck_inputs row">
-          <div className="deck_inputs_group"><label>Deck Name</label><input type="text" value={this.state.deckName} onChange={this.handleNameChange} /></div>
-          <div className="deck_inputs_group"><label>Created by</label><input type="text" value={this.state.deckCreator} onChange={this.handleCreatorChange} /></div>
+          <div className="deck_inputs_group"><label>Deck Name</label><input type="text" value={this.state.deckName} onChange={this.handleNameChange} placeholder="New Deck" /></div>
+          <div className="deck_inputs_group"><label>Created by</label><input type="text" value={this.state.deckCreator} onChange={this.handleCreatorChange} placeholder="Your Name" /></div>
           <div className="deck_inputs_group"><label>Deck Format</label>
             <select value={this.state.deckFormat} onChange={this.handleFormatChange}>
               <option value="">Select a Format</option>
@@ -309,7 +309,7 @@ class NewDeck extends Component {
         </div>
 
         <div className="deck_bottom">
-          <label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} />
+          <label>Description</label><textarea value={this.state.deckDescription} onChange={this.handleDescriptionChange} placeholder="A brief description of your deck. (Not required)"/>
 
           <div className="deck_bottom_buttons">
             <span className="save_button" onClick={this.saveDeck()}>Save Deck</span>

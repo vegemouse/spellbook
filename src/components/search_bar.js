@@ -10,7 +10,9 @@ class SeachBar extends Component {
     return (
         <input
         value={this.state.term}
-        onChange = {event => this.onInputChange(event.target.value)} />
+        onChange = {event => this.onInputChange(event.target.value)}
+        placeholder = {this.props.placeholder} 
+        />
     );
   }
 
