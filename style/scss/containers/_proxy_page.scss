@@ -4,13 +4,15 @@
   left: 0;
   top: 0;
   width: 100vw;
-  height: 1000vh;
+  height: 100%;
+  overflow-y: scroll;
   background-color: white;
   text-align: center;
   img {
     height: 88mm;
     width: 63mm;
     border: 2px dashed red;
+    box-sizing: inherit;
   }
   @media print {
     *:not(img) {

@@ -27,7 +27,6 @@
 
 ## To Do
 
-* Proxy Page
 * Copy deck to plaintext
 
 Copyright (c) 2017
