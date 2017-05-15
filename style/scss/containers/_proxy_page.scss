@@ -1,0 +1,43 @@
+.proxy-page {
+  z-index: 300;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 1000vh;
+  background-color: white;
+  text-align: center;
+  img {
+    height: 88mm;
+    width: 63mm;
+    border: 2px dashed red;
+  }
+  @media print {
+    *:not(img) {
+      display: none;
+    }
+  }
+}
+
+.print-button {
+  @include button($green);
+  height: 40px;
+  width: 120px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 20px;
+  font-family: "Oswald", sans-serif;
+}
+
+.back-button {
+  @include button($magenta);
+  height: 40px;
+  width: 120px;
+  display: inline-block;
+  text-align: center;
+  padding-top: 10px;
+  text-decoration: none;
+  margin: 20px;
+  font-family: "Oswald", sans-serif;
+}

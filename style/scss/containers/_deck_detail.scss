@@ -61,39 +61,13 @@
   font-family: "Oswald", sans-serif;
 }
 
-.sample_hand {
-  height: 300px;
-  width: 100%;
-  img {
-    width: 14.28%;
-    align-items: baseline;
-  }
-}
-
-.hand_button {
+.proxy-button {
   @include button($green);
-  margin: 20px 0;
-  padding: 10px;
-}
-
-
-.active-card-animate {
-  animation: fadeIn 0.25s;
-}
-
-.hand-container {
-  overflow-x: hidden;
-}
-
-.hand-card {
-  position: relative;
-  &-animate {
-    box-sizing: border-box;
-  }
-}
-
-@for $i from 1 through 7 {
-  .hand-card-animate:nth-of-type(#{$i}) {
-    animation: dealUp #{($i /10)}s;
-  }
+  height: 40px;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 10px 0 10px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  font-family: "Oswald", sans-serif;
 }

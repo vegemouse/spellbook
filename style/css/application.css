@@ -1347,10 +1347,10 @@ input, select {
     background-color: #e8f9f1; }
 
 #wrapper {
-  min-height: 75vh; }
+  min-height: 70vh; }
 
 .container {
-  margin-top: 60px;
+  margin-top: 40px;
   max-width: 100%; }
 
 .loading {
@@ -1373,9 +1373,8 @@ input, select {
 
 header {
   background-color: #495867;
-  height: 75px;
+  height: 65px;
   padding: 10px;
-  padding-top: 20px;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1383,7 +1382,13 @@ header {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 100; }
+  z-index: 100;
+  box-shadow: 0 0 20px #777; }
+  header img {
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 50px;
+    padding-bottom: 5px; }
   header .header_buttons_newdeck {
     display: block;
     position: relative; }
@@ -1396,10 +1401,9 @@ header {
       text-decoration: none;
       margin-right: 10px; }
       header .header_buttons_newdeck .build:hover, header .header_buttons_newdeck .build:active, header .header_buttons_newdeck .build:focus {
-        background-color: #253c2f;
+        background-color: #385c48;
         outline: 0;
-        cursor: pointer;
-        transform: scale(1.1); }
+        cursor: pointer; }
     header .header_buttons_newdeck .all {
       background-color: #270722;
       transition: all 200ms ease-out;
@@ -1411,19 +1415,10 @@ header {
       header .header_buttons_newdeck .all:hover, header .header_buttons_newdeck .all:active, header .header_buttons_newdeck .all:focus {
         background-color: black;
         outline: 0;
-        cursor: pointer;
-        transform: scale(1.1); }
+        cursor: pointer; }
     @media screen and (max-width: 500px) {
       header .header_buttons_newdeck {
         display: none; } }
-  header:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    background-color: #495867;
-    width: 100vw;
-    height: 95px;
-    z-index: -10; }
 
 .header_buttons_newdeck_small {
   display: none; }
@@ -1441,10 +1436,9 @@ header {
         text-decoration: none;
         margin-right: 10px; }
         .header_buttons_newdeck_small .build:hover, .header_buttons_newdeck_small .build:active, .header_buttons_newdeck_small .build:focus {
-          background-color: #253c2f;
+          background-color: #385c48;
           outline: 0;
-          cursor: pointer;
-          transform: scale(1.1); }
+          cursor: pointer; }
       .header_buttons_newdeck_small .all {
         background-color: #270722;
         transition: all 200ms ease-out;
@@ -1456,8 +1450,7 @@ header {
         .header_buttons_newdeck_small .all:hover, .header_buttons_newdeck_small .all:active, .header_buttons_newdeck_small .all:focus {
           background-color: black;
           outline: 0;
-          cursor: pointer;
-          transform: scale(1.1); } }
+          cursor: pointer; } }
 
 footer {
   background-color: #495867;
@@ -1514,215 +1507,18 @@ footer {
       .deck_inputs:before {
         display: none; } }
 
-.card_search {
-  background-color: #d1d8de;
-  border: 2px solid #495867;
-  height: 470px; }
-  .card_search_input {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; }
-    .card_search_input input {
-      width: 90%;
-      height: 30px;
-      outline: 0;
-      border: 0; }
-    .card_search_input button {
-      width: 10%;
-      height: 30px;
-      border: 0;
-      color: #e8f9f1;
-      background-color: #558B6E;
-      transition: all 200ms ease-out;
-      border: 0;
-      color: white; }
-      .card_search_input button:hover, .card_search_input button:active, .card_search_input button:focus {
-        background-color: #253c2f;
-        outline: 0;
-        cursor: pointer;
-        transform: scale(1.1); }
-  .card_search ul {
-    background-color: white;
-    height: 75%;
-    padding: 5px;
-    padding-bottom: 10px;
-    overflow-y: scroll;
-    font-family: "Oswald", sans-serif; }
-    .card_search ul li {
-      list-style-type: none;
-      padding: 5px;
-      margin: 0;
-      transition: background-color 200ms ease-out;
-      transition: transform 100ms ease-out; }
-      .card_search ul li:hover {
-        background-color: #e8f9f1;
-        cursor: pointer; }
-
-.selected_card {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  padding: 10px;
-  transition: height 200ms; }
-  .selected_card_image {
-    display: flex;
-    justify-content: center;
-    width: 100%; }
-  .selected_card img {
-    outline-offset: -10px;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto; }
-  .selected_card_details {
-    padding: 15px 5px; }
-    .selected_card_details_head {
-      margin: 0 0 10px 0; }
-      .selected_card_details_head strong {
-        font-size: 16px; }
-    .selected_card_details_type {
-      margin: 10px 0; }
-    .selected_card_details_text {
-      line-height: 18px; }
-  .selected_card_buttons {
-    margin-top: 15px; }
-    .selected_card_buttons button {
-      background-color: #558B6E;
-      transition: all 200ms ease-out;
-      border: 0;
-      color: white;
-      height: 43px;
-      width: 45px;
-      font-size: 24px;
-      font-family: "Oswald", sans-serif;
-      margin-right: 10px; }
-      .selected_card_buttons button:hover, .selected_card_buttons button:active, .selected_card_buttons button:focus {
-        background-color: #253c2f;
-        outline: 0;
-        cursor: pointer;
-        transform: scale(1.1); }
-
-.cmc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  background-color: #C9C5BF;
-  color: black;
-  border-radius: 100%;
-  height: 20px;
-  width: 20px;
-  font-family: "Roboto Slab", serif; }
-
-.deck_output {
-  padding-top: 15px;
-  background-color: #d1d8de;
-  border: 2px solid #495867;
-  height: 470px; }
-  .deck_output_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline; }
-    .deck_output_header strong {
-      font-size: 20px; }
-    .deck_output_header span {
-      font-family: "Roboto", sans-serif; }
-  .deck_output_cards {
-    padding: 5px;
-    padding-bottom: 10px;
-    background-color: white;
-    overflow-y: scroll;
-    height: 89%;
-    font-family: "Roboto", sans-serif;
-    color: black;
-    overflow-x: hidden; }
-    .deck_output_cards div {
-      padding: 3px 0;
-      transition: transform 100ms ease-out; }
-      .deck_output_cards div:hover {
-        background-color: #e8f9f1;
-        cursor: pointer; }
-    .deck_output_cards span {
-      margin: 5px;
-      font-size: 14px; }
-      .deck_output_cards span button {
-        border: 0;
-        background-color: transparent;
-        color: red;
-        font-size: 14px;
-        float: right;
-        padding: 0;
-        margin: 0;
-        margin-right: 5px; }
-        .deck_output_cards span button:hover {
-          cursor: pointer; }
-
 .error {
   color: red; }
 
-.deck_bottom {
-  margin: 30px -15px; }
-  .deck_bottom label {
-    display: block;
-    margin-bottom: 10px; }
-  .deck_bottom textarea {
-    width: 100%;
-    padding: 5px;
-    height: 138px;
-    font-family: "Roboto", sans-serif;
-    border: 2px solid #495867; }
-  .deck_bottom .deck_bottom_buttons {
-    background-color: #e8f9f1;
-    padding: 20px;
-    margin: 0 -15px;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center; }
-  .deck_bottom .cancel_button {
-    background-color: #270722;
-    transition: all 200ms ease-out;
-    border: 0;
-    color: white;
-    height: 40px;
-    width: 120px;
-    display: inline-block;
-    text-align: center;
-    padding-top: 10px;
-    text-decoration: none;
-    font-family: "Oswald", sans-serif; }
-    .deck_bottom .cancel_button:hover, .deck_bottom .cancel_button:active, .deck_bottom .cancel_button:focus {
-      background-color: black;
-      outline: 0;
-      cursor: pointer;
-      transform: scale(1.1); }
-  .deck_bottom .save_button {
-    background-color: #558B6E;
-    transition: all 200ms ease-out;
-    border: 0;
-    color: white;
-    height: 40px;
-    width: 120px;
-    display: inline-block;
-    text-align: center;
-    padding-top: 10px;
-    text-decoration: none;
-    margin-right: 30px;
-    font-family: "Oswald", sans-serif; }
-    .deck_bottom .save_button:hover, .deck_bottom .save_button:active, .deck_bottom .save_button:focus {
-      background-color: #253c2f;
-      outline: 0;
-      cursor: pointer;
-      transform: scale(1.1); }
-
-.active-card-animate {
-  animation: fadeIn 1s; }
-
 .deck_item {
   padding: 10px;
+  box-shadow: 0 0 0 #777;
   overflow: hidden;
   border: 2px solid #495867;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   margin-bottom: 30px;
-  transition: transform 200ms ease-in-out; }
+  transition: all 200ms ease-in-out; }
   .deck_item_head {
     border-radius: 5px 5px 0 0;
     display: flex;
@@ -1778,7 +1574,8 @@ footer {
       top: 50%;
       transform: translate(-50%, -50%); }
   .deck_item:hover {
-    transform: scale(1.03); }
+    transform: scale(1.02);
+    box-shadow: 0 0 20px #999; }
 
 .deck {
   position: relative; }
@@ -1787,6 +1584,9 @@ footer {
 
 .filter {
   display: inline; }
+
+.clear-filters {
+  color: #B25252; }
 
 .deck_detail {
   margin-bottom: 20px; }
@@ -1862,6 +1662,174 @@ footer {
   align-items: center;
   font-family: "Oswald", sans-serif; }
 
+.proxy-button {
+  background-color: #558B6E;
+  transition: all 200ms ease-out;
+  border: 0;
+  color: white;
+  height: 40px;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 10px 0 10px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  font-family: "Oswald", sans-serif; }
+  .proxy-button:hover, .proxy-button:active, .proxy-button:focus {
+    background-color: #385c48;
+    outline: 0;
+    cursor: pointer; }
+
+.selected_card {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  padding: 10px;
+  transition: height 200ms; }
+  .selected_card_image {
+    display: flex;
+    justify-content: center;
+    width: 100%; }
+  .selected_card img {
+    outline-offset: -10px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; }
+  .selected_card_details {
+    padding: 15px 5px; }
+    .selected_card_details_head {
+      margin: 0 0 10px 0; }
+      .selected_card_details_head strong {
+        font-size: 16px; }
+    .selected_card_details_type {
+      margin: 10px 0; }
+    .selected_card_details_text {
+      line-height: 18px; }
+  .selected_card_buttons {
+    margin-top: 15px; }
+    .selected_card_buttons button {
+      background-color: #558B6E;
+      transition: all 200ms ease-out;
+      border: 0;
+      color: white;
+      height: 43px;
+      width: 45px;
+      font-size: 24px;
+      font-family: "Oswald", sans-serif;
+      margin-right: 10px; }
+      .selected_card_buttons button:hover, .selected_card_buttons button:active, .selected_card_buttons button:focus {
+        background-color: #385c48;
+        outline: 0;
+        cursor: pointer; }
+
+.cmc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background-color: #C9C5BF;
+  color: black;
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  font-family: "Roboto Slab", serif; }
+
+.active-card-animate {
+  animation: fadeIn 1s; }
+
+.deck_output {
+  padding-top: 15px;
+  background-color: #d1d8de;
+  border: 2px solid #495867;
+  height: 470px; }
+  .deck_output_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; }
+    .deck_output_header strong {
+      font-size: 20px; }
+    .deck_output_header span {
+      font-family: "Roboto", sans-serif; }
+  .deck_output_cards {
+    padding: 5px;
+    padding-bottom: 10px;
+    background-color: white;
+    overflow-y: scroll;
+    height: 89%;
+    font-family: "Roboto", sans-serif;
+    color: black;
+    overflow-x: hidden; }
+    .deck_output_cards div {
+      padding: 3px 0;
+      transition: transform 100ms ease-out; }
+      .deck_output_cards div:hover {
+        background-color: #e8f9f1;
+        cursor: pointer; }
+    .deck_output_cards span {
+      margin: 5px;
+      font-size: 14px; }
+      .deck_output_cards span button {
+        border: 0;
+        background-color: transparent;
+        color: red;
+        font-size: 14px;
+        float: right;
+        padding: 0;
+        margin: 0;
+        margin-right: 5px; }
+        .deck_output_cards span button:hover {
+          cursor: pointer; }
+
+.deck_bottom {
+  margin: 30px -15px; }
+  .deck_bottom label {
+    display: block;
+    margin-bottom: 10px; }
+  .deck_bottom textarea {
+    width: 100%;
+    padding: 5px;
+    height: 138px;
+    font-family: "Roboto", sans-serif;
+    border: 2px solid #495867; }
+  .deck_bottom .deck_bottom_buttons {
+    background-color: #e8f9f1;
+    padding: 20px;
+    margin: 0 -15px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; }
+  .deck_bottom .cancel_button {
+    background-color: #270722;
+    transition: all 200ms ease-out;
+    border: 0;
+    color: white;
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    font-family: "Oswald", sans-serif; }
+    .deck_bottom .cancel_button:hover, .deck_bottom .cancel_button:active, .deck_bottom .cancel_button:focus {
+      background-color: black;
+      outline: 0;
+      cursor: pointer; }
+  .deck_bottom .save_button {
+    background-color: #558B6E;
+    transition: all 200ms ease-out;
+    border: 0;
+    color: white;
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    margin-right: 30px;
+    font-family: "Oswald", sans-serif; }
+    .deck_bottom .save_button:hover, .deck_bottom .save_button:active, .deck_bottom .save_button:focus {
+      background-color: #385c48;
+      outline: 0;
+      cursor: pointer; }
+
 .sample_hand {
   height: 300px;
   width: 100%; }
@@ -1877,10 +1845,9 @@ footer {
   margin: 20px 0;
   padding: 10px; }
   .hand_button:hover, .hand_button:active, .hand_button:focus {
-    background-color: #253c2f;
+    background-color: #385c48;
     outline: 0;
-    cursor: pointer;
-    transform: scale(1.1); }
+    cursor: pointer; }
 
 .active-card-animate {
   animation: fadeIn 0.25s; }
@@ -1914,6 +1881,101 @@ footer {
 .hand-card-animate:nth-of-type(7) {
   animation: dealUp 0.7s; }
 
+.card_search {
+  background-color: #d1d8de;
+  border: 2px solid #495867;
+  height: 470px; }
+  .card_search_input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .card_search_input input {
+      width: 90%;
+      height: 30px;
+      outline: 0;
+      border: 0; }
+    .card_search_input button {
+      width: 10%;
+      height: 30px;
+      border: 0;
+      color: #e8f9f1;
+      background-color: #558B6E;
+      transition: all 200ms ease-out;
+      border: 0;
+      color: white; }
+      .card_search_input button:hover, .card_search_input button:active, .card_search_input button:focus {
+        background-color: #385c48;
+        outline: 0;
+        cursor: pointer; }
+  .card_search ul {
+    background-color: white;
+    height: 75%;
+    padding: 5px;
+    padding-bottom: 10px;
+    overflow-y: scroll;
+    font-family: "Oswald", sans-serif; }
+    .card_search ul li {
+      list-style-type: none;
+      padding: 5px;
+      margin: 0;
+      transition: background-color 200ms ease-out;
+      transition: transform 100ms ease-out; }
+      .card_search ul li:hover {
+        background-color: #e8f9f1;
+        cursor: pointer; }
+
+.proxy-page {
+  z-index: 300;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 1000vh;
+  background-color: white;
+  text-align: center; }
+  .proxy-page img {
+    height: 88mm;
+    width: 63mm;
+    border: 2px dashed red; }
+  @media print {
+    .proxy-page *:not(img) {
+      display: none; } }
+
+.print-button {
+  background-color: #558B6E;
+  transition: all 200ms ease-out;
+  border: 0;
+  color: white;
+  height: 40px;
+  width: 120px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 20px;
+  font-family: "Oswald", sans-serif; }
+  .print-button:hover, .print-button:active, .print-button:focus {
+    background-color: #385c48;
+    outline: 0;
+    cursor: pointer; }
+
+.back-button {
+  background-color: #270722;
+  transition: all 200ms ease-out;
+  border: 0;
+  color: white;
+  height: 40px;
+  width: 120px;
+  display: inline-block;
+  text-align: center;
+  padding-top: 10px;
+  text-decoration: none;
+  margin: 20px;
+  font-family: "Oswald", sans-serif; }
+  .back-button:hover, .back-button:active, .back-button:focus {
+    background-color: black;
+    outline: 0;
+    cursor: pointer; }
+
 .intro {
   background-color: black;
   background-image: url(../../img/ponder.jpg);
@@ -1946,10 +2008,9 @@ footer {
     height: 40px;
     width: 120px; }
     .intro_build:hover, .intro_build:active, .intro_build:focus {
-      background-color: #253c2f;
+      background-color: #385c48;
       outline: 0;
-      cursor: pointer;
-      transform: scale(1.1); }
+      cursor: pointer; }
   .intro_all {
     background-color: #270722;
     transition: all 200ms ease-out;
@@ -1962,7 +2023,6 @@ footer {
     .intro_all:hover, .intro_all:active, .intro_all:focus {
       background-color: black;
       outline: 0;
-      cursor: pointer;
-      transform: scale(1.1); }
+      cursor: pointer; }
 
 /*# sourceMappingURL=application.css.map */

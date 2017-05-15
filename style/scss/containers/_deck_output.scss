@@ -1,0 +1,53 @@
+.deck_output {
+  padding-top: 15px;
+  background-color: lighten($blue, 50%);
+  border: 2px solid $blue;
+  height: 470px;
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    strong {
+      @extend h3;
+      font-size: 20px;
+    }
+    span {
+      font-family: "Roboto", sans-serif;
+    }
+  }
+  &_cards {
+    padding: 5px;
+    padding-bottom: 10px;
+    background-color: white;
+    overflow-y: scroll;
+    height: 89%;
+    font-family: "Roboto", sans-serif;
+    color: black;
+    overflow-x: hidden;
+    div {
+      padding: 3px 0;
+      transition: transform 100ms ease-out;
+      &:hover {
+        background-color: $white;
+        cursor: pointer;
+      }
+    }
+    span {
+      margin: 5px;
+      font-size: 14px;
+      button {
+        border: 0;
+        background-color: transparent;
+        color: red;
+        font-size: 14px;
+        float: right;
+        padding: 0;
+        margin: 0;
+        margin-right: 5px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

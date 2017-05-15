@@ -1,0 +1,42 @@
+.card_search {
+  background-color: lighten($blue, 50%);
+  border: 2px solid $blue;
+  height: 470px;
+  &_input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      width: 90%;
+      height: 30px;
+      outline: 0;
+      border: 0;
+    }
+    button {
+      width: 10%;
+      height: 30px;
+      border: 0;
+      color: $white;
+      @include button($green);
+    }
+  }
+  ul {
+    background-color: white;
+    height: 75%;
+    padding: 5px;
+    padding-bottom: 10px;
+    overflow-y: scroll;
+    font-family: "Oswald", sans-serif;
+    li {
+      list-style-type: none;
+      padding: 5px;
+      margin: 0;
+      transition: background-color 200ms ease-out;
+      transition: transform 100ms ease-out;
+      &:hover {
+        background-color: $white;
+        cursor: pointer;
+      }
+    }
+  }
+}

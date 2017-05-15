@@ -110,9 +110,8 @@ class DeckList extends Component {
         <h2>{this.state.selectedFormat} Decks</h2>
         <div className="deck_inputs row">
           <div className="deck_inputs_group">
-
             <div className="filter">
-              <label>Deck Search</label>
+              <label>Deck Name</label>
               <SearchBar onSearchTermChange={deckSearch} />
             </div>
             <br className="hidden_large"/>
@@ -132,7 +131,8 @@ class DeckList extends Component {
                 <option value="Planechase">Planechase</option>
               </select>
             </div>
-            <i className="fa fa-times" aria-hidden="true" onClick={this.clearFilters.bind(this)}></i>
+            <br className="hidden_large"/>
+            <i className="fa fa-times clear-filters" aria-hidden="true" onClick={this.clearFilters.bind(this)}></i>
           </div>
         </div>
 

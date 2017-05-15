@@ -40,15 +40,20 @@ export default class Deck extends Component {
     return(
       <div className="deck_item_bottom" style={cardStyle}>
         <p>
-
-        {this.props.deck.description.slice(0, 180)}...<br /><strong>(Read more)</strong><br />
-        <strong>Uploaded {this.props.deck.uploadDate && moment(this.props.deck.uploadDate).format('M.D.YY')}</strong>
+          {this.props.deck.description.slice(0, 180)}...<br /><strong>(Read more)</strong>
         </p>
       </div>
     );
   }
 
   render() {
+    var creator;
+    if (this.props.deck.creator) {
+      creator = this.props.deck.creator;
+    } else {
+      creator = 'Anonymous';
+    }
+
     return (
       <AnimateOnChange
         baseClassName="deck"
@@ -58,7 +63,7 @@ export default class Deck extends Component {
         <div className="deck_item">
           <div className="deck_item_head">
             <div><h3>{this.props.deck.name}</h3>
-            <span className="deck_item_format">{this.props.deck.format} deck</span></div>
+            <span className="deck_item_format">{this.props.deck.format} deck by {creator}</span></div>
             <div className="deck_item_colors">
               {this.renderColors()}
             </div>

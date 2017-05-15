@@ -1,11 +1,12 @@
 .deck_item {
   padding: 10px;
+  box-shadow: 0 0 0 #777;
   overflow: hidden;
   border: 2px solid $blue;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   margin-bottom: 30px;
-  transition: transform 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
   &_head {
     border-radius: 5px 5px 0 0;
     display: flex;
@@ -69,7 +70,8 @@
     }
   }
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px #999;
   }
 }
 
@@ -82,4 +84,8 @@
 
 .filter {
   display: inline;
+}
+
+.clear-filters {
+  color: #B25252;
 }

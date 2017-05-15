@@ -17,12 +17,14 @@ class NewDeck extends Component {
       sideboardArray: [],
       maybeboardArray: [],
       deckName: '',
+      deckCreator: '',
       deckFormat: '',
       deckDescription: '',
-      error: false
+      error: null
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleCreatorChange = this.handleCreatorChange.bind(this);
     this.handleFormatChange = this.handleFormatChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
   }
@@ -109,36 +111,55 @@ class NewDeck extends Component {
   }
 
   checkError() {
-    if (this.state.error) {
-      return <div className="row error">*Please fill out all the fields.</div>;
+    if (this.state.error === 'name') {
+      return <div className="row error">*Please give your deck a name</div>;
+    }
+    if (this.state.error === 'format') {
+      return <div className="row error">*Please give your deck a format</div>;
+    }
+    if (this.state.error === 'cards') {
+      return <div className="row error">*Please give your deck some cards</div>;
     }
   }
 
   saveDeck() {
+
     return function() {
-      if(this.state.deckName && this.state.deckFormat && this.state.deckDescription && this.state.mainDeckArray.length > 0) {
+
+      if (!this.state.deckName) {
+        this.setState({error: 'name'});
+        window.scrollTo(0, 0);
+      } else if (!this.state.deckFormat) {
+        this.setState({error: 'format'});
+        window.scrollTo(0, 0);
+      } else if (!this.state.mainDeckArray.length > 0) {
+        this.setState({error: 'cards'});
+        window.scrollTo(0, 0);
+      } else {
         let now = new Date();
         const deck = {
           name: this.state.deckName,
+          creator: this.state.deckCreator,
           format: this.state.deckFormat,
           description: this.state.deckDescription,
           cards: this.state.mainDeckArray,
           sideboard: this.state.sideboardArray,
           maybeboard: this.state.maybeboardArray,
-          colors: this.getColors(this.state.mainDeckArray),
-          uploadDate: now
+          colors: this.getColors(this.state.mainDeckArray)
         }
         this.props.createDeck(deck).then(() => {
-      this.context.router.push('/decks');
-    });
-      } else {
-        this.setState({error: true})
+          this.context.router.push('/decks');
+        });
       }
-    }.bind(this);
+    }.bind(this)
   }
 
   handleNameChange(event) {
     this.setState({deckName: event.target.value});
+  }
+
+  handleCreatorChange(event) {
+    this.setState({deckCreator: event.target.value});
   }
 
   handleFormatChange(event) {
@@ -220,7 +241,8 @@ class NewDeck extends Component {
         {this.checkError()}
         <div className="deck_inputs row">
           <div className="deck_inputs_group"><label>Deck Name</label><input type="text" value={this.state.deckName} onChange={this.handleNameChange} /></div>
-          <div className="deck_inputs_group"><label>Format</label>
+          <div className="deck_inputs_group"><label>Created by</label><input type="text" value={this.state.deckCreator} onChange={this.handleCreatorChange} /></div>
+          <div className="deck_inputs_group"><label>Deck Format</label>
             <select value={this.state.deckFormat} onChange={this.handleFormatChange}>
               <option value="">Select a Format</option>
               <option value="Standard">Standard</option>

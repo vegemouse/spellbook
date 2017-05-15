@@ -85,12 +85,18 @@ class DeckDetail extends Component {
   render() {
     if (this.props.deck) {
       const deck = this.props.deck;
+      var creator;
+      if (deck.creator) {
+        creator = deck.creator;
+      } else {
+        creator = 'Anonymous';
+      }
       return (
         <div className="container deck_detail">
 
           <div className="row">
             <h2>{deck.name}</h2>
-            <span className="deck_detail_format">{deck.format} deck</span>
+            <span className="deck_detail_format">{deck.format} deck by {creator}</span>
             <br />
             <p className="deck_detail_description">{deck.description}</p>
           </div>
@@ -195,7 +201,9 @@ class DeckDetail extends Component {
             </div>
           </div>
           <br />
-          <SampleHand deck={this.props.deck}/>
+          <SampleHand deck={this.props.deck}/><br />
+
+          <Link to={"/proxy/" + this.props.params.id} className="proxy-button">View deck as printable proxies</Link>
 
         </div>
       );

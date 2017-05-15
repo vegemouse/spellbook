@@ -4,10 +4,9 @@
   border: 0;
   color: white;
   &:hover, &:active, &:focus {
-    background-color: darken($color, 25%);
+    background-color: darken($color, 15%);
     outline: 0;
     cursor: pointer;
-    transform: scale(1.1);
   }
 }
 
