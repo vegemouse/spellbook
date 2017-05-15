@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-
 import App from './components/app';
 import DeckList from './components/deck_list';
 import NewDeck from './components/deck_new';

@@ -200,10 +200,9 @@ class DeckDetail extends Component {
 
             </div>
           </div>
+          <Link to={"/proxy/" + this.props.params.id} className="proxy-button">View deck as printable proxies</Link>
           <br />
           <SampleHand deck={this.props.deck}/><br />
-
-          <Link to={"/proxy/" + this.props.params.id} className="proxy-button">View deck as printable proxies</Link>
 
         </div>
       );

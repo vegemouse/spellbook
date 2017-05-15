@@ -54,10 +54,8 @@ class CardSearch extends Component {
 
     return(
       <div className="card_search col-sm-4">
-        <form>
           <h4>Search Card Name</h4>
           <SearchBar placeholder="Jace, the Mind Sculptor" onSearchTermChange={cardSearch} />
-        </form>
         <ul>
           {this.renderResults()}
         </ul>

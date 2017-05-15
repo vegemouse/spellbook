@@ -38,7 +38,7 @@ export default class SampleHand extends Component {
           baseClassName="hand-card"
           animationClassName="hand-card-animate"
           animate={true}>
-          <img alt={card.name} key={card.id + Math.floor(Math.random() * 999)} src={card.imageUrl} />
+          <img alt={card.name} key={card.id + Math.floor(Math.random() * 9999)} src={card.imageUrl} />
         </AnimateOnChange>
       );
     });
